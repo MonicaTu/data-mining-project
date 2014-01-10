@@ -96,9 +96,9 @@ begin
   @features_num = [256, 144, 120, 80, 192, 60, 168, 192, 64, 18]
   @concept_num = 94
 
-  initial_database
-  import_concepts_and_features
-  create_concept_feature_views(@db, @concept_num, @features.count)
+#  initial_database
+#  import_concepts_and_features
+#  create_concept_feature_views(@db, @concept_num, @features.count, @features)
   export_concepts_and_features
   
 #  exe("./db_import_normalized.rb #{@db}")
