@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative 'database'
-require_relative 'db_create_views'
+require_relative 'dm_create_concept_feature_views'
 require_relative 'dm_export_concept_feature'
 
 def initial_database
@@ -31,6 +31,10 @@ def import_concepts_and_features
     csv = "../../Train/train_features/ImageCLEF 2012 (training) - #{feature}.csv" 
     db_import_csv(@db, feature, csv)
   end
+end
+
+def create_concept_feature_views
+  dm_create_concept_feature_views(@db, @concept_num, @features.count, @features)
 end
 
 def export_concepts_and_features
@@ -74,7 +78,7 @@ begin
 
 #  initial_database
 #  import_concepts_and_features
-#  create_concept_feature_views(@db, @concept_num, @features.count, @features)
+#  create_concept_feature_views
   export_concepts_and_features
   
 #  exe("./db_import_normalized.rb #{@db}")

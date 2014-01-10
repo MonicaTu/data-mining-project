@@ -2,7 +2,7 @@
 
 require 'sqlite3'
 
-def create_concept_feature_views(dbFile, concept_count, features)
+def dm_create_concept_feature_views(dbFile, concept_count, features)
   concept_count.times do |i|
     create_view_for_concept(dbFile, i) # concept x yes/no views
   end
@@ -81,7 +81,7 @@ if __FILE__ == $0
   db = SQLite3::Database.open dbFile 
   begin
     concept_count = 94
-    create_concept_feature_views(dbFile, concept_count, features)
+    dm_create_concept_feature_views(dbFile, concept_count, features)
   rescue SQLite3::Exception => e 
     puts "Exception occured"
     puts e
