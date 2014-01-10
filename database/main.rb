@@ -2,6 +2,7 @@
 
 require_relative 'database'
 require_relative 'db_create_views'
+require_relative 'dm_export_concept_feature'
 
 def initial_database
   db_create_database(@db)
@@ -36,27 +37,12 @@ def export_concepts_and_features
   @concept_num.times do |i|
     concept = "c#{i}"
     @features.each do |feature|
-      export_concept_feature(concept, feature)
+      dm_export_concept_feature(@db, concept, feature)
     end
   end
 end
 
 #====================================
-
-def export_concept_feature(concept, feature)
-  format = 'csv'
-
-  table_yes = "#{concept}_yes_#{feature}"
-  table_no = "#{concept}_no_#{feature}"
-  output = "#{concept}_#{feature}.#{format}"
-
-  db_export_table(@db, table_yes)
-  db_export_table(@db, table_no)
-
-  file_yes = "#{table_yes}.#{format}"
-  file_no = "#{table_no}.#{format}"
-  combine_and_rm_2files(output, file_yes, file_no)
-end
 
 def schema_of_feature(name, num)
   schema = "" 
@@ -68,16 +54,6 @@ def schema_of_feature(name, num)
     end
   end
   return schema
-end
-
-def combine_and_rm_2files(output, file1, file2)
-  exe("cat #{file1} #{file2} >> #{output}")
-  rm_file(file1)
-  rm_file(file2)
-end
-
-def rm_file(file)
-  exe("rm #{file}")
 end
 
 def exe(sh)

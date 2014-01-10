@@ -35,7 +35,7 @@ def combine_and_rm_2files(output, file1, file2)
   rm_file(file2)
 end
 
-def export_concept_feature(dbFile, concept, feature)
+def dm_export_concept_feature(dbFile, concept, feature)
   format = 'csv'
 
   table_yes = "#{concept}_yes_#{feature}"
@@ -57,6 +57,6 @@ if __FILE__ == $0
   concept = ARGV[1] 
   feature = ARGV[2] 
 #  feature = 'autocolorcorrelogram_cedd_colorlayout_edgehistogram_fcth_gabor_jcd_jpegch_scalablecolor_tamura'
-  csv_file = export_concept_feature(dbFile, concept, feature)
+  csv_file = dm_export_concept_feature(dbFile, concept, feature)
   puts csv_file
 end
