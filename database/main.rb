@@ -21,6 +21,9 @@ def initial_database
     schema = schema_of_feature(feature, @features_num[i])
     db_create_table_schema(@db, feature, schema)
   end
+
+  # import data
+  import_concepts_and_features
 end
 
 def import_concepts_and_features
@@ -34,7 +37,7 @@ def import_concepts_and_features
 end
 
 def create_concept_feature_views
-  dm_create_concept_feature_views(@db, @concept_num, @features.count, @features)
+  dm_create_concept_feature_views(@db, @concept_num, @features)
 end
 
 def export_concepts_and_features
@@ -77,8 +80,7 @@ begin
   @concept_num = 94
 
 #  initial_database
-#  import_concepts_and_features
-#  create_concept_feature_views
+  create_concept_feature_views
   export_concepts_and_features
   
 #  exe("./db_import_normalized.rb #{@db}")
