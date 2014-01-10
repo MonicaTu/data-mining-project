@@ -18,3 +18,16 @@ def db_create_table_schema(dbFile, table, schema)
     db.close if db
   end
 end
+
+def db_import_csv(db, table, csv)
+  cmd = "!
+.separator ,
+.import '#{csv}' #{table}
+SELECT COUNT(*) FROM #{table};
+!"
+  # shell script
+  sh = "sqlite3 #{db} << #{cmd}"
+  puts sh
+  %x{#{sh}}
+end
+
