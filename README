@@ -1,0 +1,4 @@
+* dependency 
+
+	gem install sqlite3
+	apt-get install ruby-sqlite3
