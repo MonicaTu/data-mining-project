@@ -26,7 +26,22 @@ def db_import_csv(db, table, csv)
 SELECT COUNT(*) FROM #{table};
 !"
   # shell script
-  sh = "sqlite3 #{db} << #{cmd}"
+  exe("sqlite3 #{db} << #{cmd}")
+end
+
+def db_export_table(db, table)
+  output = "#{table}.csv" 
+  cmd = "!
+.mode csv
+.headers on
+.output #{output}
+SELECT * FROM #{table};
+!"
+  exe("sqlite3 #{db} << #{cmd}") 
+end
+
+def exe(sh)
+  # sh: shell script
   puts sh
   %x{#{sh}}
 end
