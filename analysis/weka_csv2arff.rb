@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+@maxHeap='-Xmx1024m'
+
 def rm_file(file)
   sh = "rm #{file}"
   puts sh
@@ -8,7 +10,7 @@ end
 
 def csv2arff(csv)
   arff = "#{File.basename(csv, ".*")}.arff"
-  sh = "java -Xmx128m weka.core.converters.CSVLoader #{csv} > #{arff}" 
+  sh = "java #{@maxHeap} weka.core.converters.CSVLoader -i #{csv} -o #{arff}" 
   puts sh
   %x{#{sh}}
   return arff

@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+@maxHeap='-Xmx1024m'
+
 def export_table(db, table, yn)
   sh = "" # sh: shell script
   if yn == 1
@@ -34,7 +36,7 @@ end
 
 def mv_csv_arff(csv_file)
   arff_file = "#{File.basename(csv_file, ".*")}.arff"
-  sh = "java weka.core.converters.CSVLoader #{csv_file} > #{arff_file}" 
+  sh = "java #{@maxHeap} weka.core.converters.CSVLoader #{csv_file} > #{arff_file}" 
   %x{#{sh}}
   rm_file(csv_file)
   return arff_file 
@@ -63,7 +65,7 @@ def attribute_selection(input)
   filter = 'weka.filters.supervised.attribute.AttributeSelection' 
   search_options = '-S "weka.attributeSelection.BestFirst -D 1 -N 5"' 
   evaluator_options = '-E "weka.attributeSelection.CfsSubsetEval "' 
-  sh = "java #{filter} #{evaluator_options} #{search_options} -i #{input} -o #{output}" 
+  sh = "java #{@maxHeap} #{filter} #{evaluator_options} #{search_options} -i #{input} -o #{output}" 
   %x{#{sh}}
 end
 
