@@ -24,6 +24,8 @@ def initial_database
 
   # import data
   import_concepts_and_features
+  # views for each concept_feature
+  create_concept_feature_views
 end
 
 def import_concepts_and_features
@@ -80,13 +82,10 @@ begin
   @concept_num = 94
 
 #  initial_database
-  create_concept_feature_views
   export_concepts_and_features
   
 #  exe("./db_import_normalized.rb #{@db}")
-#  exe("./db_create_views.rb #{@db}")
 
 #  exe("./db_integrate_tables.rb #{@db}")
 #  exe("./db_integrate_views.rb #{@db}")
-#  exe("./db_export.rb #{@db}")
 end
