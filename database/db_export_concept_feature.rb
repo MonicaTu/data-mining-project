@@ -52,10 +52,11 @@ def export_concept_feature(dbFile, concept, feature)
 end
 
 # main
-begin
+if __FILE__ == $0
   dbFile = ARGV[0] 
-  concept = 'c0'
-  feature = 'autocolorcorrelogram_cedd_colorlayout_edgehistogram_fcth_gabor_jcd_jpegch_scalablecolor_tamura'
+  concept = ARGV[1] 
+  feature = ARGV[2] 
+#  feature = 'autocolorcorrelogram_cedd_colorlayout_edgehistogram_fcth_gabor_jcd_jpegch_scalablecolor_tamura'
   csv_file = export_concept_feature(dbFile, concept, feature)
   puts csv_file
 end
