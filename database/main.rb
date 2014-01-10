@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative 'database'
-require_relative 'db_export_concept_feature'
+require_relative 'db_create_views'
 
 def initial_database
   db_create_database(@db)
@@ -22,7 +22,7 @@ def initial_database
   end
 end
 
-def import_concept_and_features
+def import_concepts_and_features
   db_import_csv(@db, 'UUID', '../train_id.csv')
   db_import_csv(@db, 'Concepts', '../concepts/concepts.csv')
   
@@ -32,7 +32,31 @@ def import_concept_and_features
   end
 end
 
+def export_concepts_and_features
+  @concept_num.times do |i|
+    concept = "c#{i}"
+    @features.each do |feature|
+      export_concept_feature(concept, feature)
+    end
+  end
+end
+
 #====================================
+
+def export_concept_feature(concept, feature)
+  format = 'csv'
+
+  table_yes = "#{concept}_yes_#{feature}"
+  table_no = "#{concept}_no_#{feature}"
+  output = "#{concept}_#{feature}.#{format}"
+
+  db_export_table(@db, table_yes)
+  db_export_table(@db, table_no)
+
+  file_yes = "#{table_yes}.#{format}"
+  file_no = "#{table_no}.#{format}"
+  combine_and_rm_2files(output, file_yes, file_no)
+end
 
 def schema_of_feature(name, num)
   schema = "" 
@@ -46,22 +70,36 @@ def schema_of_feature(name, num)
   return schema
 end
 
+def combine_and_rm_2files(output, file1, file2)
+  exe("cat #{file1} #{file2} >> #{output}")
+  rm_file(file1)
+  rm_file(file2)
+end
+
+def rm_file(file)
+  exe("rm #{file}")
+end
+
 def exe(sh)
+  # sh: shell script
   puts sh
   %x{#{sh}}
 end
 
-@db = ARGV[0]
-@features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
-@features_num = [256, 144, 120, 80, 192, 60, 168, 192, 64, 18]
-
 begin
+  @db = ARGV[0]
   if @db == nil 
     return 
   end
 
+  @features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
+  @features_num = [256, 144, 120, 80, 192, 60, 168, 192, 64, 18]
+  @concept_num = 94
+
   initial_database
-  import_concept_and_features
+  import_concepts_and_features
+  create_concept_feature_views(@db, @concept_num, @features.count)
+  export_concepts_and_features
   
 #  exe("./db_import_normalized.rb #{@db}")
 #  exe("./db_create_views.rb #{@db}")
@@ -69,9 +107,4 @@ begin
 #  exe("./db_integrate_tables.rb #{@db}")
 #  exe("./db_integrate_views.rb #{@db}")
 #  exe("./db_export.rb #{@db}")
-
-#  concept = 'c0'
-#  @features.each do |feature|
-#    export_concept_feature(@db, concept, feature)
-#  end
 end

@@ -2,15 +2,24 @@
 
 require 'sqlite3'
 
-def create_concept_feature_views(concept_count, feature_count)
-  concept_count.times do |i|
-    create_view_for_concept(i) # concept x yes/no views
-  end
-
-  concept_count.times do |i|
-    feature_count.times do |j|
-      create_view_for_concept_feature(i, j) # concept x yes/no x feature views
+def create_concept_feature_views(dbFile, concept_count, feature_count)
+  @db = SQLite3::Database.open dbFile
+  begin
+    concept_count.times do |i|
+      create_view_for_concept(i) # concept x yes/no views
     end
+
+    concept_count.times do |i|
+      feature_count.times do |j|
+        create_view_for_concept_feature(i, j) # concept x yes/no x feature views
+      end
+    end
+  rescue SQLite3::Exception => e 
+    puts "Exception occured"
+    puts e
+  ensure
+    @stm.close if @stm
+    @db.close if @db
   end
 end
 
@@ -58,17 +67,19 @@ def create_view_for_concept_feature(concept_id, feature_id)
 end
 
 # ======== main =============
-@dbFile = ARGV[0] 
-@features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
-
-begin
-  @db = SQLite3::Database.open @dbFile 
-  concept_count = 94
-  create_concept_feature_views(concept_count, @features.count)
-rescue SQLite3::Exception => e 
-  puts "Exception occured"
-  puts e
-ensure
-  @stm.close if @stm
-  @db.close if @db
+if __FILE__ == $0
+  @dbFile = ARGV[0] 
+  @features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
+  
+  begin
+    @db = SQLite3::Database.open @dbFile 
+    concept_count = 94
+    create_concept_feature_views(concept_count, @features.count)
+  rescue SQLite3::Exception => e 
+    puts "Exception occured"
+    puts e
+  ensure
+    @stm.close if @stm
+    @db.close if @db
+  end
 end
