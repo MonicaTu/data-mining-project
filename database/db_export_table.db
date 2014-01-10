@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+def export_table(dbFile, table)
+  output = "#{table}.csv" 
+  # sh: shell script
+  sh = "sqlite3 #{dbFile} <<!
+.mode csv
+.headers on
+.output #{output}
+SELECT * FROM #{table};
+!"
+  puts sh
+  %x{#{sh}}
+end
+
+def rm_file(file)
+  sh = "rm #{file}"
+  puts sh
+  %x{#{sh}}
+end
+
+# main
+@features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
+begin
+  dbFile = ARGV[0] 
+  @features.each do |table| 
+    export_table(dbFile, table)
+  end
+end
