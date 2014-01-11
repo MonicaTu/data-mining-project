@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'sqlite3'
+require_relative 'system'
 
 def db_create_database(dbFile)
   db = SQLite3::Database.open dbFile
@@ -8,16 +9,8 @@ def db_create_database(dbFile)
 end
 
 def db_create_table_schema(dbFile, table, schema)
-  db = SQLite3::Database.open dbFile
-  begin
-    cmd = "CREATE TABLE IF NOT EXISTS #{table} (#{schema});"
-    db.execute cmd 
-  rescue SQLite3::Exception => e 
-    puts "Exception occured"
-    puts e
-  ensure
-    db.close if db
-  end
+  cmd = "CREATE TABLE IF NOT EXISTS #{table} (#{schema});"
+  exesql(dbFile, cmd)
 end
 
 def db_import_csv(db, table, csv)
@@ -27,7 +20,7 @@ def db_import_csv(db, table, csv)
 SELECT COUNT(*) FROM #{table};
 !"
   # shell script
-  exe("sqlite3 #{db} << #{cmd}")
+  exesh("sqlite3 #{db} << #{cmd}")
 end
 
 def db_export_table(db, table)
@@ -38,34 +31,40 @@ def db_export_table(db, table)
 .output #{output}
 SELECT * FROM #{table};
 !"
-  exe("sqlite3 #{db} << #{cmd}") 
+  exesh("sqlite3 #{db} << #{cmd}") 
   return output
 end
 
 def db_combine_tables(dbFile, left, right)
-  db = SQLite3::Database.open dbFile
 
   newTable = "#{left}_#{right}"
   cmd = "CREATE TABLE IF NOT EXISTS #{newTable} as select #{left}.*, #{right}.* from #{left}, #{right} where #{left}.rowid=#{right}.rowid;"
-  db.execute cmd 
+  exesql(dbFile, cmd)
 
   # DEBUG
   cmd = "SELECT COUNT(*) FROM #{newTable};"
-  rs = db.execute cmd 
+  rs = exesql(dbFile, cmd)
   puts "#{newTable}: #{rs}"
 
+  return newTable 
+end
+
+def db_drop_table(dbFile, table)
+  puts "---------!!!!--------"
+  cmd = "DROP TABLE #{table};"
+  exesql(dbFile, cmd)
+end
+
+def exesql(dbFile, cmd)
+  puts cmd
+
+  db = SQLite3::Database.open dbFile
+  rs = db.execute cmd 
   rescue SQLite3::Exception => e 
     puts "Exception occured"
     puts e
   ensure
     db.close if db
 
-  return newTable 
+  return rs
 end
-
-def exe(sh)
-  # sh: shell script
-  puts sh
-  %x{#{sh}}
-end
-

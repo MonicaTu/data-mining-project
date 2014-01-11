@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative 'system'
+
 def export_table(dbFile, table, yn)
   sh = "" # sh: shell script
   if yn == 1
@@ -17,12 +19,6 @@ SELECT 'N', * FROM #{table};
 !"
   end
 
-  puts sh
-  %x{#{sh}}
-end
-
-def rm_file(file)
-  sh = "rm #{file}"
   puts sh
   %x{#{sh}}
 end

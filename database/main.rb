@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 
+require_relative 'weka'
 require_relative 'database'
+require_relative 'system'
 require_relative 'dm_create_concept_feature_views'
 require_relative 'dm_export_concept_feature'
 require_relative 'dm_integrate_concept_features'
 
-require_relative 'weka'
 
 def initial_database
   db_create_database(@db)
@@ -68,12 +69,6 @@ def schema_of_feature(name, num)
   return schema
 end
 
-def exe(sh)
-  # sh: shell script
-  puts sh
-  %x{#{sh}}
-end
-
 if __FILE__ == $0
   @db = ARGV[0]
   if @db == nil 
@@ -91,33 +86,45 @@ if __FILE__ == $0
   newTable = nil
   @features.each_with_index do |feature, i|
     # export data for PCA
-#    csv = db_export_table(@db, feature)
-#    arff = weka_pca(csv)
-#    csv = weka_arff2csv(arff)
-#    exe("sed -i '1d' #{csv}")
+    csv = db_export_table(@db, feature)
+    arff = weka_pca(csv)
+    # !!! remove file !!!
+    rm_file(csv)
+    csv = weka_arff2csv(arff)
+    exesh("sed -i '1d' #{csv}")
  
     # import PCA results
-#    attr_num = File.open(arff).read.scan(/@attribute/).count
-#    table = "pca_#{feature}"
-#    schema = schema_of_feature(table, attr_num)
-#    db_create_table_schema(@db, table, schema)
-#    db_import_csv(@db, table, csv)
+    attr_num = File.open(arff).read.scan(/@attribute/).count
+    table = "pca_#{feature}"
+    schema = schema_of_feature(table, attr_num)
+    db_create_table_schema(@db, table, schema)
+    db_import_csv(@db, table, csv)
+
+    # !!! remove files !!!
+    rm_file(arff)
+    rm_file(csv)
 
     # integrate all features
     if i == 0
-      newTable = feature
+      newTable = table
     else
-      newTable = db_combine_tables(@db, newTable, feature) 
+      left = newTable
+      newTable = db_combine_tables(@db, left, table) 
+      if i > 1
+        # !!! remove files !!!
+        db_drop_table(@db, left)
+      end
     end
   end 
 
   # integrate concept x all features
-  @concept_num.times do |i|
+#  @concept_num.times do |i|
+    i = 0
     tables = dm_integrate_concept_features(@db, i, newTable) # concept x yes/no x feature views
     concept = "c#{i}"
     csv = dm_export_concept_feature(@db, concept, newTable)
 
     # feature selection
     weka_attribute_selection(csv)
-  end
+#  end
 end
