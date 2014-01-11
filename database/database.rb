@@ -3,7 +3,8 @@
 require 'sqlite3'
 
 def db_create_database(dbFile)
-  SQLite3::Database.open dbFile
+  db = SQLite3::Database.open dbFile
+  db.close if db
 end
 
 def db_create_table_schema(dbFile, table, schema)
@@ -38,6 +39,28 @@ def db_export_table(db, table)
 SELECT * FROM #{table};
 !"
   exe("sqlite3 #{db} << #{cmd}") 
+  return output
+end
+
+def db_combine_tables(dbFile, left, right)
+  db = SQLite3::Database.open dbFile
+
+  newTable = "#{left}_#{right}"
+  cmd = "CREATE TABLE IF NOT EXISTS #{newTable} as select #{left}.*, #{right}.* from #{left}, #{right} where #{left}.rowid=#{right}.rowid;"
+  db.execute cmd 
+
+  # DEBUG
+  cmd = "SELECT COUNT(*) FROM #{newTable};"
+  rs = db.execute cmd 
+  puts "#{newTable}: #{rs}"
+
+  rescue SQLite3::Exception => e 
+    puts "Exception occured"
+    puts e
+  ensure
+    db.close if db
+
+  return newTable 
 end
 
 def exe(sh)

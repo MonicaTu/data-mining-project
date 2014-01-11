@@ -3,6 +3,9 @@
 require_relative 'database'
 require_relative 'dm_create_concept_feature_views'
 require_relative 'dm_export_concept_feature'
+require_relative 'dm_integrate_concept_features'
+
+require_relative 'weka'
 
 def initial_database
   db_create_database(@db)
@@ -71,21 +74,50 @@ def exe(sh)
   %x{#{sh}}
 end
 
-begin
+if __FILE__ == $0
   @db = ARGV[0]
   if @db == nil 
     return 
   end
 
+  @concept_num = 94
   @features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
   @features_num = [256, 144, 120, 80, 192, 60, 168, 192, 64, 18]
-  @concept_num = 94
+#  pca_features_num = [56, 90, 100, 58, 129, 2, 102, 22, 15, 11]
 
 #  initial_database
-  export_concepts_and_features
-  
-#  exe("./db_import_normalized.rb #{@db}")
+#  export_concepts_and_features
 
-#  exe("./db_integrate_tables.rb #{@db}")
-#  exe("./db_integrate_views.rb #{@db}")
+  newTable = nil
+  @features.each_with_index do |feature, i|
+    # export data for PCA
+#    csv = db_export_table(@db, feature)
+#    arff = weka_pca(csv)
+#    csv = weka_arff2csv(arff)
+#    exe("sed -i '1d' #{csv}")
+ 
+    # import PCA results
+#    attr_num = File.open(arff).read.scan(/@attribute/).count
+#    table = "pca_#{feature}"
+#    schema = schema_of_feature(table, attr_num)
+#    db_create_table_schema(@db, table, schema)
+#    db_import_csv(@db, table, csv)
+
+    # integrate all features
+    if i == 0
+      newTable = feature
+    else
+      newTable = db_combine_tables(@db, newTable, feature) 
+    end
+  end 
+
+  # integrate concept x all features
+  @concept_num.times do |i|
+    tables = dm_integrate_concept_features(@db, i, newTable) # concept x yes/no x feature views
+    concept = "c#{i}"
+    csv = dm_export_concept_feature(@db, concept, newTable)
+
+    # feature selection
+    weka_attribute_selection(csv)
+  end
 end
