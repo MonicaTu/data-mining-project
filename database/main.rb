@@ -37,16 +37,18 @@ def dimensionality_reduction
       next
     end
 
-    # export data for PCA
+    # export feature data
     csv = db_export_table(@db, feature)
-
     # pca
-    arff = weka_pca(csv)
+    pca_arff = weka_pca(csv)
     rm_file(csv) # !!! remove file !!!
+    attr_num = File.open(pca_arff).read.scan(/@attribute/).count
+    # pca - normalization 
+    norm_arff = weka_normalization(pca_arff)
+    rm_file(pca_arff) # !!! remove file !!!
     # pca - arff2csv
-    pca_csv = weka_arff2csv(arff)
-    attr_num = File.open(arff).read.scan(/@attribute/).count
-    rm_file(arff) # !!! remove file !!!
+    pca_csv = weka_arff2csv(norm_arff)
+    rm_file(norm_arff) # !!! remove file !!!
     exesh("sed -i '1d' #{pca_csv}")
  
     # create PCA tables
