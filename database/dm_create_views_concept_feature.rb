@@ -28,11 +28,16 @@ def create_views_conceptid_yes_and_no(dbFile, concept_id)
 end
 
 def dm_create_views_concept_feature_yes_and_no(dbFile, concept_id, feature)
+  views = []
+
   # 'yes/no' views for each concept
   concept_v = create_views_conceptid_yes_and_no(@db, concept_id)
+  concept_v.each {|view| views << view}
 
   concept_v.length.times do |i|
     result_v = "#{concept_v[i]}_#{feature}"
+    views << result_v
+
     query = "SELECT #{feature}.* FROM #{concept_v[i]}, #{feature} WHERE #{feature}.rowid=#{concept_v[i]}.id"
     cmd = "CREATE VIEW IF NOT EXISTS #{result_v} AS #{query}" 
     exesql(dbFile, cmd)
@@ -43,7 +48,7 @@ def dm_create_views_concept_feature_yes_and_no(dbFile, concept_id, feature)
     rs.each {|row| puts "#{result_v}: #{row}"}
   end
 
-  return concept_v
+  return views
 end
 
 if __FILE__ == $0
