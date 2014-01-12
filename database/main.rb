@@ -143,9 +143,7 @@ if __FILE__ == $0
 
   initial_database
   dimensionality_reduction
-#  @concept_num.times do |i|
-#    data_mining(i)
-#  end
-
-  data_mining(1)
+  @concept_num.times do |i|
+    data_mining(i)
+  end
 end
