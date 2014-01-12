@@ -76,9 +76,11 @@ def db_is_imported(dbFile, table)
   # check whether data was already imported or not. 
   cmd = "SELECT COUNT(*) FROM #{table};"
   rs = exesql(dbFile, cmd)
-  count = rs[0][0]
-  puts count
-  return (count > 0) ? true : false
+  puts rs
+  if rs != nil && rs[0][0] > 0
+    return true
+  end
+  return false
 end
 
 def exesql(dbFile, cmd)
@@ -94,4 +96,12 @@ def exesql(dbFile, cmd)
 
   puts "rs: #{rs}"
   return rs
+end
+
+if __FILE__ == $0
+  dbFile = ARGV[0]
+  table = ARGV[1]
+  db_create_database(dbFile)
+  db_create_table_schema(dbFile, table, 'uuid text')
+  db_is_imported(dbFile, table)
 end
