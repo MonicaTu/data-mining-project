@@ -33,26 +33,31 @@ def dimensionality_reduction
   @features.each_with_index do |feature, i|
     table = "pca_#{feature}"
 
-    # check whether pca data was already imported or not. 
-    if db_is_imported(@db, table)
+    if db_is_table_created(@db, table) && db_is_imported(@db, table)
       next
     end
 
     # export data for PCA
     csv = db_export_table(@db, feature)
+
+    # pca
     arff = weka_pca(csv)
     rm_file(csv) # !!! remove file !!!
-    csv = weka_arff2csv(arff)
-    exesh("sed -i '1d' #{csv}")
+    # pca - arff2csv
+    pca_csv = weka_arff2csv(arff)
+    rm_file(arff) # !!! remove file !!!
+    exesh("sed -i '1d' #{pca_csv}")
  
-    # import PCA results
+    # create PCA tables
     attr_num = File.open(arff).read.scan(/@attribute/).count
     schema = schema_of_feature(table, attr_num)
     db_create_table_schema(@db, table, schema)
-    db_import_csv(@db, table, csv)
 
-    rm_file(arff) # !!! remove file !!!
-    rm_file(csv)  # !!! remove file !!!
+    # import PCA results
+    if db_is_imported(@db, table) == false
+      db_import_csv(@db, table, pca_csv)
+    end
+    rm_file(pca_csv)  # !!! remove file !!!
   end 
 end
 
