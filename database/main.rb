@@ -45,11 +45,11 @@ def dimensionality_reduction
     rm_file(csv) # !!! remove file !!!
     # pca - arff2csv
     pca_csv = weka_arff2csv(arff)
+    attr_num = File.open(arff).read.scan(/@attribute/).count
     rm_file(arff) # !!! remove file !!!
     exesh("sed -i '1d' #{pca_csv}")
  
     # create PCA tables
-    attr_num = File.open(arff).read.scan(/@attribute/).count
     schema = schema_of_feature(table, attr_num)
     db_create_table_schema(@db, table, schema)
 
@@ -57,7 +57,7 @@ def dimensionality_reduction
     if db_is_imported(@db, table) == false
       db_import_csv(@db, table, pca_csv)
     end
-    rm_file(pca_csv)  # !!! remove file !!!
+      rm_file(pca_csv)  # !!! remove file !!!
   end 
 end
 
