@@ -55,13 +55,13 @@ end
 
 def db_drop_table(dbFile, table)
   puts "---------!!!!--------"
-  cmd = "DROP TABLE #{table};"
+  cmd = "DROP TABLE IF EXISTS #{table};"
   exesql(dbFile, cmd)
 end
 
 def db_drop_view(dbFile, view)
   puts "---------!!!!--------"
-  cmd = "DROP VIEW #{view};"
+  cmd = "DROP VIEW IF EXISTS #{view};"
   exesql(dbFile, cmd)
 end
 
