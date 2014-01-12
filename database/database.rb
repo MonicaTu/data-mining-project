@@ -66,11 +66,10 @@ def db_drop_view(dbFile, view)
 end
 
 def db_is_table_created(dbFile, table)
-  cmd = "SELECT name FROM sqlite_master WHERE type='table' AND name=#{table};"
+  cmd = "SELECT name FROM sqlite_master WHERE type='table' AND name='#{table}';"
   rs = exesql(dbFile, cmd)
-  name = rs[0][0]
-  puts name
-  return (name == nil) ? false : true
+  puts rs
+  return (rs == nil) ? false : true
 end
 
 def db_is_imported(dbFile, table)
