@@ -59,6 +59,12 @@ def db_drop_table(dbFile, table)
   exesql(dbFile, cmd)
 end
 
+def db_drop_view(dbFile, view)
+  puts "---------!!!!--------"
+  cmd = "DROP VIEW #{view};"
+  exesql(dbFile, cmd)
+end
+
 def db_is_imported(dbFile, table)
   # check whether data was already imported or not. 
   cmd = "SELECT COUNT(*) FROM #{table};"

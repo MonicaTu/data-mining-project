@@ -85,7 +85,7 @@ def data_mining(concept_id)
 
   # !!! drop views !!!
   views.each do |view|
-    db_drop_table(@db, view) 
+    db_drop_view(@db, view) 
   end
 end
 
