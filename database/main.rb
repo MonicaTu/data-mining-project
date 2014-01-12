@@ -62,20 +62,11 @@ def dimensionality_reduction
 end
 
 def data_mining(concept_id)
-  tmp_views = [] 
-
-  # 'yes/no' views for each concept_feature
-  @features.each do |feature|
-    views = dm_create_views_concept_feature_yes_and_no(@db, concept_id, feature)
-    views.each { |view| tmp_views << view }
-  end
-
   # create table allfeatures
   allfeatures = create_table_allfeatures
 
   # create 'yes/no' views for concept_allfeatures
   views = dm_create_views_concept_feature_yes_and_no(@db, concept_id, allfeatures) 
-  views.each { |view| tmp_views << view }
 
   # export view allfeatures
   csv = dm_export_concept_feature(@db, concept_id, allfeatures)
@@ -89,7 +80,7 @@ def data_mining(concept_id)
   rm_file(arff) # !!! remove file !!!
 
   # !!! drop views !!!
-  tmp_views.each do |view|
+  views.each do |view|
     db_drop_view(@db, view) 
   end
 end
