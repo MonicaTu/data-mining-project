@@ -74,10 +74,14 @@ def data_mining(concept_id)
   csv = dm_export_concept_feature(@db, concept_id, allfeatures)
 
   # feature selection w/ concept_allfeatures
-  arff = weka_attribute_selection(csv, 'first')
+  # TODO: limit N-num = Y-num
+  norm_arff = weka_normalization(csv)
   rm_file(csv) # !!! remove file !!!
+  arff = weka_attribute_selection(norm_arff, 'first')
+  rm_file(norm_arff) # !!! remove file !!!
 
   # classify
+  # TODO: limit N-num = Y-num
   weka_classify(arff, 'last')
   rm_file(arff) # !!! remove file !!!
 
@@ -102,7 +106,7 @@ end
 def create_table_allfeatures
   allfeatures = nil
   @features.each_with_index do |feature, i|
-    table = "pca_#{feature}"
+    table = "#{feature}"
     # integrate all features
     if i == 0
       allfeatures = table
@@ -140,7 +144,7 @@ if __FILE__ == $0
   @features_num = [256, 144, 120, 80, 192, 60, 168, 192, 64, 18]
 
   initial_database
-  dimensionality_reduction
+#  dimensionality_reduction
   @concept_num.times do |i|
     data_mining(i)
   end
