@@ -3,9 +3,8 @@
 require_relative 'weka'
 require_relative 'database'
 require_relative 'system'
-require_relative 'dm_create_concept_feature_views'
+require_relative 'dm_create_views_concept_feature'
 require_relative 'dm_export_concept_feature'
-require_relative 'dm_integrate_concept_features'
 
 
 def initial_database
@@ -28,9 +27,69 @@ def initial_database
 
   # import data
   import_concepts_and_features
-  # views for each concept_feature
-  create_concept_feature_views
 end
+
+def dimensionality_reduction
+  @features.each_with_index do |feature, i|
+    table = "pca_#{feature}"
+
+    # check whether pca data was already imported or not. 
+    if db_is_imported(@db, table)
+      next
+    end
+
+    # export data for PCA
+    csv = db_export_table(@db, feature)
+    arff = weka_pca(csv)
+    rm_file(csv) # !!! remove file !!!
+    csv = weka_arff2csv(arff)
+    exesh("sed -i '1d' #{csv}")
+ 
+    # import PCA results
+    attr_num = File.open(arff).read.scan(/@attribute/).count
+    schema = schema_of_feature(table, attr_num)
+    db_create_table_schema(@db, table, schema)
+    db_import_csv(@db, table, csv)
+
+    rm_file(arff) # !!! remove file !!!
+    rm_file(csv)  # !!! remove file !!!
+  end 
+end
+
+def data_mining(concept_id)
+  views = []
+
+  # 'yes/no' views for each concept_feature
+  @features.each do |feature|
+    yn = dm_create_views_concept_feature_yes_and_no(@db, concept_id, feature)
+    yn.each { |view| views << view }
+  end
+
+  # create table allfeatures
+  allfeatures = create_table_allfeatures
+
+  # create 'yes/no' views for concept_allfeatures
+  yn = dm_create_views_concept_feature_yes_and_no(@db, concept_id, allfeatures) 
+  yn.each { |view| views << view }
+
+  # export view allfeatures
+  csv = dm_export_concept_feature(@db, concept_id, allfeatures)
+
+  # feature selection w/ concept_allfeatures
+  arff = weka_attribute_selection(csv, 'first')
+  rm_file(csv) # !!! remove file !!!
+
+  # classify
+  weka_classify(arff, 'last')
+  rm_file(arff) # !!! remove file !!!
+
+  # !!! drop views !!!
+  views.each do |view|
+    db_drop_table(@db, view) 
+  end
+end
+
+#====================================
 
 def import_concepts_and_features
   db_import_csv(@db, 'UUID', '../train_id.csv')
@@ -42,20 +101,23 @@ def import_concepts_and_features
   end
 end
 
-def create_concept_feature_views
-  dm_create_concept_feature_views(@db, @concept_num, @features)
-end
-
-def export_concepts_and_features
-  @concept_num.times do |i|
-    concept = "c#{i}"
-    @features.each do |feature|
-      dm_export_concept_feature(@db, concept, feature)
+def create_table_allfeatures
+  allfeatures = nil
+  @features.each_with_index do |feature, i|
+    table = "pca_#{feature}"
+    # integrate all features
+    if i == 0
+      allfeatures = table
+    else
+      left = allfeatures
+      allfeatures = db_combine_tables(@db, left, table) 
+#      if i > 1
+#        db_drop_table(@db, left) # !!! drop table !!!
+#      end
     end
-  end
+  end 
+  return allfeatures
 end
-
-#====================================
 
 def schema_of_feature(name, num)
   schema = "" 
@@ -78,53 +140,12 @@ if __FILE__ == $0
   @concept_num = 94
   @features = ['AutoColorCorrelogram', 'CEDD', 'ColorLayout', 'EdgeHistogram', 'FCTH', 'Gabor', 'JCD', 'JpegCH', 'ScalableColor', 'Tamura']
   @features_num = [256, 144, 120, 80, 192, 60, 168, 192, 64, 18]
-#  pca_features_num = [56, 90, 100, 58, 129, 2, 102, 22, 15, 11]
 
-#  initial_database
-#  export_concepts_and_features
-
-  newTable = nil
-  @features.each_with_index do |feature, i|
-    # export data for PCA
-    csv = db_export_table(@db, feature)
-    arff = weka_pca(csv)
-    # !!! remove file !!!
-    rm_file(csv)
-    csv = weka_arff2csv(arff)
-    exesh("sed -i '1d' #{csv}")
- 
-    # import PCA results
-    attr_num = File.open(arff).read.scan(/@attribute/).count
-    table = "pca_#{feature}"
-    schema = schema_of_feature(table, attr_num)
-    db_create_table_schema(@db, table, schema)
-    db_import_csv(@db, table, csv)
-
-    # !!! remove files !!!
-    rm_file(arff)
-    rm_file(csv)
-
-    # integrate all features
-    if i == 0
-      newTable = table
-    else
-      left = newTable
-      newTable = db_combine_tables(@db, left, table) 
-      if i > 1
-        # !!! remove files !!!
-        db_drop_table(@db, left)
-      end
-    end
-  end 
-
-  # integrate concept x all features
+  initial_database
+  dimensionality_reduction
 #  @concept_num.times do |i|
-    i = 0
-    tables = dm_integrate_concept_features(@db, i, newTable) # concept x yes/no x feature views
-    concept = "c#{i}"
-    csv = dm_export_concept_feature(@db, concept, newTable)
-
-    # feature selection
-    weka_attribute_selection(csv)
+#    data_mining(i)
 #  end
+
+  data_mining(1)
 end

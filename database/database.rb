@@ -13,17 +13,21 @@ def db_create_table_schema(dbFile, table, schema)
   exesql(dbFile, cmd)
 end
 
-def db_import_csv(db, table, csv)
+def db_import_csv(dbFile, table, csv)
+  if db_is_imported(dbFile, table)
+    return
+  end
+
   cmd = "!
 .separator ,
 .import '#{csv}' #{table}
 SELECT COUNT(*) FROM #{table};
 !"
   # shell script
-  exesh("sqlite3 #{db} << #{cmd}")
+  exesh("sqlite3 #{dbFile} << #{cmd}")
 end
 
-def db_export_table(db, table)
+def db_export_table(dbFile, table)
   output = "#{table}.csv" 
   cmd = "!
 .mode csv
@@ -31,7 +35,7 @@ def db_export_table(db, table)
 .output #{output}
 SELECT * FROM #{table};
 !"
-  exesh("sqlite3 #{db} << #{cmd}") 
+  exesh("sqlite3 #{dbFile} << #{cmd}") 
   return output
 end
 
@@ -55,6 +59,15 @@ def db_drop_table(dbFile, table)
   exesql(dbFile, cmd)
 end
 
+def db_is_imported(dbFile, table)
+  # check whether data was already imported or not. 
+  cmd = "SELECT COUNT(*) FROM #{table};"
+  rs = exesql(dbFile, cmd)
+  count = rs[0][0]
+  puts count
+  return (count > 0) ? true : false
+end
+
 def exesql(dbFile, cmd)
   puts cmd
 
@@ -66,5 +79,6 @@ def exesql(dbFile, cmd)
   ensure
     db.close if db
 
+  puts "rs: #{rs}"
   return rs
 end

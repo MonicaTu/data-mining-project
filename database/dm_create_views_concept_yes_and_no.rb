@@ -2,7 +2,7 @@
 
 require 'sqlite3'
 
-def dm_integrate_concept_features(dbFile, concept_id, table)
+def dm_create_views_concept_yes_and_no(dbFile, concept_id, table)
   db = SQLite3::Database.open dbFile 
 
   concept_v = ["c#{concept_id}_yes", "c#{concept_id}_no"]
@@ -37,6 +37,6 @@ table = 'AutoColorCorrelogram_CEDD_ColorLayout_EdgeHistogram_FCTH_Gabor_JCD_Jpeg
 
 if __FILE__ == 0
   concept_count.times do |i|
-    dm_integrate_concept_features(@dbFile, i, table) # concept x yes/no x feature views
+    dm_create_views_concept_yes_and_no(@dbFile, i, table) # concept x yes/no x feature views
   end
 end
