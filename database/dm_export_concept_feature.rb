@@ -9,13 +9,13 @@ def export_table(dbFile, table, yn)
 .mode csv
 .headers on
 .output #{table}.csv 
-SELECT 'Y', * FROM #{table};
+SELECT *, 'Y' FROM #{table};
 !"
   else
     sh = "sqlite3 #{dbFile} <<!
 .mode csv
 .output #{table}.csv 
-SELECT 'N', * FROM #{table};
+SELECT *, 'N' FROM #{table};
 !"
   end
 
@@ -33,17 +33,22 @@ end
 
 def dm_export_concept_feature(dbFile, concept_id, feature)
   format = 'csv'
-  concept = "c#{concept_id}"
 
-  table_yes = "#{concept}_yes_#{feature}"
-  table_no = "#{concept}_no_#{feature}"
-  output = "#{concept}_#{feature}.#{format}"
+  # create 2 views, yes & no
+  views = dm_create_views_concept_feature_yes_and_no(dbFile, concept_id, feature) 
 
+  # export yes
+  table_yes = "#{views[0]}_#{feature}"
+  file_yes = "#{table_yes}.#{format}"
   export_table(dbFile, table_yes, 1)
+
+  # export no
+  table_no = "#{views[1]}_#{feature}"
+  file_no = "#{table_no}.#{format}"
   export_table(dbFile, table_no, 0)
 
-  file_yes = "#{table_yes}.#{format}"
-  file_no = "#{table_no}.#{format}"
+  # save to file, yes_no
+  output = "c#{concept_id}_#{feature}.#{format}"
   combine_and_rm_2files(output, file_yes, file_no)
   return output
 end

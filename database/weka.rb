@@ -22,18 +22,18 @@ def weka_attribute_selection(input, class_index)
   return output
 end
 
-def weka_normalization(input)
+def weka_normalization(input, class_index)
   output = "normalized-#{File.basename(input, ".*")}.arff"
   filter = 'weka.filters.unsupervised.attribute.Normalize'
-  options = '-S 1.0 -T 0.0'
+  options = "-S 1.0 -T 0.0 -c #{class_index}"
   exesh("java #{@maxHeap} #{filter} #{options} -i #{input} -o #{output}") 
   return output
 end
 
-def weka_classify(input, class_index)
-  arff = "classify-#{File.basename(input, ".*")}.arff"
+def weka_classify(train, class_index, test)
+  arff = "classify-#{File.basename(train, ".*")}.arff"
   options = "-c #{class_index} -no-cv -i"
-  exesh("java #{@maxHeap} weka.classifiers.bayes.NaiveBayes #{options} -t #{input} > #{arff}")
+  exesh("java #{@maxHeap} weka.classifiers.bayes.NaiveBayes #{options} -t #{train} -T #{test} > #{arff}")
   return arff
 end
 
@@ -52,8 +52,10 @@ end
 
 # main
 if __FILE__ == $0
-  input = ARGV[0] 
-#  weka_attribute_selection(input, 'first')
-#  weka_classify(input, 'last')
+  train = ARGV[0] 
+  test = ARGV[1] 
+  weka_csv2arff(train)
+#  weka_attribute_selection(train, 'first')
+#  weka_classify(train, 'last', test)
 end
 

@@ -9,20 +9,14 @@ def create_views_conceptid_yes_and_no(dbFile, concept_id)
   query = "SELECT UUID.id FROM Concepts, UUID WHERE Concepts.id=#{concept_id} and Concepts.uuid_id=UUID.uuid;"
   cmd = "CREATE VIEW IF NOT EXISTS #{concept_v[0]} AS #{query};"
   exesql(dbFile, cmd)
-
   # DEBUG
-  cmd = "SELECT COUNT(*) FROM #{concept_v[0]};" 
-  rs = exesql(dbFile, cmd)
-  rs.each {|row| puts "#{concept_v[0]}: #{row}"}
+  db_is_imported(dbFile, concept_v[0])
 
   query = "SELECT id FROM UUID EXCEPT SELECT id FROM #{concept_v[0]};"
   cmd = "CREATE VIEW IF NOT EXISTS #{concept_v[1]} AS #{query};"
   exesql(dbFile, cmd)
-
   # DEBUG
-  cmd = "SELECT COUNT(*) FROM #{concept_v[1]};" 
-  rs = exesql(dbFile, cmd)
-  rs.each {|row| puts "#{concept_v[1]}: #{row}"}
+  db_is_imported(dbFile, concept_v[1])
 
   return concept_v
 end
@@ -41,11 +35,8 @@ def dm_create_views_concept_feature_yes_and_no(dbFile, concept_id, feature)
     query = "SELECT #{feature}.* FROM #{concept_v[i]}, #{feature} WHERE #{feature}.rowid=#{concept_v[i]}.id"
     cmd = "CREATE VIEW IF NOT EXISTS #{result_v} AS #{query}" 
     exesql(dbFile, cmd)
-
     # DEBUG
-    cmd = "SELECT COUNT(*) FROM #{result_v};" 
-    rs = exesql(dbFile, cmd)
-    rs.each {|row| puts "#{result_v}: #{row}"}
+    db_is_imported(dbFile, result_v)
   end
 
   return views
