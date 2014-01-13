@@ -68,18 +68,19 @@ end
 
 def data_mining(concept_id)
   # create table allfeatures
-  allfeatures = dm_create_table_allfeatures(@dbTrain, @features)
+#  allfeatures = dm_create_table_allfeatures(@dbTrain, @features)
 
   # export view allfeatures
-  csv = dm_export_concept_feature(@dbTrain, concept_id, allfeatures)
+#  csv = dm_export_concept_feature(@dbTrain, concept_id, allfeatures)
 
   # feature selection w/ concept_allfeatures
   # TODO: limit N-num = Y-num
-  norm_arff = weka_normalization(csv, 'last')
-  rm_file(csv) # !!! remove file !!!
-  train_arff = weka_attribute_selection(norm_arff, 'last')
-  rm_file(norm_arff) # !!! remove file !!!
+#  norm_arff = weka_normalization(csv, 'last')
+#  rm_file(csv) # !!! remove file !!!
+#  train_arff = weka_attribute_selection(norm_arff, 'last')
+#  rm_file(norm_arff) # !!! remove file !!!
 
+train_arff = 'attribute_selection-normalized-c0_AutoColorCorrelogram_CEDD_ColorLayout_EdgeHistogram_FCTH_Gabor_JCD_JpegCH_ScalableColor_Tamura.arff'
   # prepare test set
   attributes = dm_parse_attributes(train_arff)
   test_arff = dm_prepare_test_set(concept_id, attributes, @dbTest)
@@ -91,9 +92,10 @@ def data_mining(concept_id)
   rm_file(test_arff) # !!! remove file !!!
 
   # !!! drop views !!!
-  views.each do |view|
-    db_drop_view(@dbTrain, view) 
-  end
+  # TODO: delete it! 
+#  views.each do |view|
+#    db_drop_view(@dbTrain, view) 
+#  end
 end
 
 #====================================
@@ -127,7 +129,7 @@ if __FILE__ == $0
     return 
   end
 
-#  initial_database
+  initial_database
   data_mining(0)
 #  dimensionality_reduction
 #  @concept_num.times do |i|

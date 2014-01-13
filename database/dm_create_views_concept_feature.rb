@@ -6,17 +6,17 @@ require_relative 'database'
 def create_views_conceptid_yes_and_no(dbFile, concept_id)
   concept_v = ["c#{concept_id}_yes", "c#{concept_id}_no"]
 
-  query = "SELECT UUID.id FROM Concepts, UUID WHERE Concepts.id=#{concept_id} and Concepts.uuid_id=UUID.uuid;"
-  cmd = "CREATE VIEW IF NOT EXISTS #{concept_v[0]} AS #{query};"
-  exesql(dbFile, cmd)
+  view_yes = concept_v[0] 
+  query = "SELECT UUID.id FROM Concepts, UUID WHERE Concepts.id=#{concept_id} and Concepts.uuid_id=UUID.uuid"
+  db_create_view_as_schema(dbFile, view_yes, query)
   # DEBUG
-  db_is_imported(dbFile, concept_v[0])
+  db_is_imported(dbFile, view_yes) 
 
-  query = "SELECT id FROM UUID EXCEPT SELECT id FROM #{concept_v[0]};"
-  cmd = "CREATE VIEW IF NOT EXISTS #{concept_v[1]} AS #{query};"
-  exesql(dbFile, cmd)
+  view_no = concept_v[1] 
+  query = "SELECT id FROM UUID EXCEPT SELECT id FROM #{view_yes}"
+  db_create_view_as_schema(dbFile, view_no, query)
   # DEBUG
-  db_is_imported(dbFile, concept_v[1])
+  db_is_imported(dbFile, view_no) 
 
   return concept_v
 end
@@ -25,7 +25,7 @@ def dm_create_views_concept_feature_yes_and_no(dbFile, concept_id, feature)
   views = []
 
   # 'yes/no' views for each concept
-  concept_v = create_views_conceptid_yes_and_no(@db, concept_id)
+  concept_v = create_views_conceptid_yes_and_no(dbFile, concept_id)
   concept_v.each {|view| views << view}
 
   concept_v.length.times do |i|

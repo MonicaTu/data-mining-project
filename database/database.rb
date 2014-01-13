@@ -13,8 +13,8 @@ def db_create_table_schema(dbFile, table, schema)
   exesql(dbFile, cmd)
 end
 
-def db_create_view_schema(dbFile, view, schema)
-  cmd = "CREATE VIEW IF NOT EXISTS #{view} (#{schema});"
+def db_create_view_as_schema(dbFile, view, schema)
+  cmd = "CREATE VIEW IF NOT EXISTS #{view} AS #{schema};"
   exesql(dbFile, cmd)
 end
 
