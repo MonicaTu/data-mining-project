@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative 'system'
+
 def dm_parse_attributes(arff)
   attributes = []
   File.readlines(arff).each do |line|
@@ -7,6 +9,8 @@ def dm_parse_attributes(arff)
       attributes << line.split[1]
     end
   end
+  output = "#{File.basename(arff, ".*")}.txt"
+  write_file(output, attributes)
   return attributes
 end
 

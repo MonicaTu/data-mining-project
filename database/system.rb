@@ -11,4 +11,7 @@ def rm_file(file)
   exesh("rm #{file}")
 end
 
+def write_file(output, text)
+  File.open(output, 'w') { |file| file.write(text) }
+end
 
