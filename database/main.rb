@@ -69,32 +69,32 @@ end
 
 def data_mining(concept_id)
   # create table allfeatures
-#  allfeatures = dm_create_table_allfeatures(@dbTrain, @features)
+  allfeatures = dm_create_table_allfeatures(@dbTrain, @features)
 
   # export view allfeatures
-#  csv = dm_export_concept_feature(@dbTrain, concept_id, allfeatures)
+  csv = dm_export_concept_feature(@dbTrain, concept_id, allfeatures)
 
   # feature selection w/ concept_allfeatures
   # TODO: limit N-num = Y-num
-#  norm_arff = weka_normalization(csv, 'last')
-#  rm_file(csv) # !!! remove file !!!
-#  attr_arff = weka_attribute_selection(norm_arff, 'last')
-#  rm_file(norm_arff) # !!! remove file !!!
+  norm_arff = weka_normalization(csv, 'last')
+  rm_file(csv) # !!! remove file !!!
+  attr_arff = weka_attribute_selection(norm_arff, 'last')
+  rm_file(norm_arff) # !!! remove file !!!
 
-attr_arff = 'attribute_selection-normalized-c0_AutoColorCorrelogram_CEDD_ColorLayout_FCTH_Gabor_JCD_JpegCH_ScalableColor_Tamura.arff'
-  # prepare test set
+  # prepare train & test set
+  # TODO: normalization? 
   attributes = dm_parse_attributes(attr_arff)
+  rm_file(attr_arff) # !!! remove file !!!
   train_arff = dm_prepare_train_set(concept_id, attributes, @dbTrain)
   test_arff = dm_prepare_test_set(concept_id, attributes, @dbTest)
 
   # classify
-  # TODO: limit N-num = Y-num
   weka_classify(train_arff, 'last', test_arff)
   rm_file(train_arff) # !!! remove file !!!
   rm_file(test_arff) # !!! remove file !!!
 
   # !!! drop views !!!
-  # TODO: delete it! 
+  # TODO: get views 
 #  views.each do |view|
 #    db_drop_view(@dbTrain, view) 
 #  end

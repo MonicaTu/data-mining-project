@@ -11,7 +11,7 @@ def dm_prepare_test_set(concept_id, attributes, dbFile)
   # create table allfeatures
   allfeatures = dm_create_table_allfeatures(dbFile, @features)
 
-  # create views with selected attributes
+  # create table with selected attributes
   attrs = "" 
   attributes.each_with_index do |attr, i|
     attrs = (i == 0) ? "#{attr}" : "#{attrs}, #{attr}"

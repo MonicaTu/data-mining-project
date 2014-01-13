@@ -8,7 +8,7 @@ end
 
 def rm_file(file)
   puts "---------!!!!--------"
-#  exesh("rm #{file}")
+  exesh("rm #{file}")
 end
 
 

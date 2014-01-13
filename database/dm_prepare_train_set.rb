@@ -3,6 +3,7 @@
 require_relative 'parameters'
 require_relative 'weka'
 require_relative 'database'
+require_relative 'system'
 require_relative 'dm_create_table_allfeatures'
 require_relative 'dm_create_views_concept_feature'
 require_relative 'dm_export_concept_feature'
@@ -22,9 +23,14 @@ def dm_prepare_train_set(concept_id, attributes, dbFile)
 
   # export view selectedfeatures
   csv = dm_export_concept_feature(dbFile, concept_id, selectedfeatures)
-  arff = weka_csv2arff(csv)
-  norm_arff = weka_normalization(arff, 'last')
+  y_num = File.open(csv).read.scan(/Y/).count
+  exesh("sed -i '#{y_num*2},15001d' #{csv}") # !!! cut file !!!
 
+  arff = weka_csv2arff(csv)
+  rm_file(csv) # !!! remove file !!!
+
+  norm_arff = weka_normalization(arff, 'last')
+  rm_file(arff) # !!! remove file !!!
   return norm_arff
 end
 
