@@ -82,9 +82,11 @@ def data_mining(concept_id)
   rm_file(norm_arff) # !!! remove file !!!
 
   # prepare train & test set
-  # TODO: normalization? 
   attributes = dm_parse_attributes(attr_arff)
+  output = "#{File.basename(attr_arff, ".*")}.txt"
+  write_file(output, attributes)
   rm_file(attr_arff) # !!! remove file !!!
+  # TODO: normalization? 
   train_arff = dm_prepare_train_set(concept_id, attributes, @dbTrain)
   test_arff = dm_prepare_test_set(concept_id, attributes, @dbTest)
 
@@ -132,9 +134,8 @@ if __FILE__ == $0
   end
 
   initial_database
-  data_mining(0)
 #  dimensionality_reduction
-#  @concept_num.times do |i|
-#    data_mining(i)
-#  end
+  @concept_num.times do |i|
+    data_mining(i)
+  end
 end

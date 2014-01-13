@@ -12,7 +12,7 @@ def weka_pca(input)
 end
 
 def weka_attribute_selection(input, class_index)
-  output = "attribute_selection-#{File.basename(input, ".*")}.arff"
+  output = "#{File.basename(input, ".*")}-attribute_selection.arff"
   filter = 'weka.filters.supervised.attribute.AttributeSelection' 
   search_options = '-S "weka.attributeSelection.BestFirst -D 1 -N 5"' 
   evaluator_options = '-E "weka.attributeSelection.CfsSubsetEval "' 
@@ -23,7 +23,7 @@ def weka_attribute_selection(input, class_index)
 end
 
 def weka_normalization(input, class_index)
-  output = "normalized-#{File.basename(input, ".*")}.arff"
+  output = "#{File.basename(input, ".*")}-normalized.arff"
   filter = 'weka.filters.unsupervised.attribute.Normalize'
   options = "-S 1.0 -T 0.0 -c #{class_index}"
   exesh("java #{@maxHeap} #{filter} #{options} -i #{input} -o #{output}") 
@@ -31,7 +31,7 @@ def weka_normalization(input, class_index)
 end
 
 def weka_classify(train, class_index, test)
-  arff = "classify-#{File.basename(train, ".*")}.arff"
+  arff = "#{File.basename(train, ".*")}-classify.arff"
   options = "-c #{class_index} -no-cv -i"
   exesh("java #{@maxHeap} weka.classifiers.bayes.NaiveBayes #{options} -t #{train} -T #{test} > #{arff}")
   return arff

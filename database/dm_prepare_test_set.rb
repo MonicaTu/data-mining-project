@@ -22,9 +22,12 @@ def dm_prepare_test_set(concept_id, attributes, dbFile)
 
   # export view selectedfeatures
   csv = dm_export_concept_feature(dbFile, concept_id, selectedfeatures)
-  arff = weka_csv2arff(csv)
-  norm_arff = weka_normalization(arff, 'last')
 
+  arff = weka_csv2arff(csv)
+  rm_file(csv) # !!! remove file !!!
+
+  norm_arff = weka_normalization(arff, 'last')
+  rm_file(arff) # !!! remove file !!!
   return norm_arff
 end
 
