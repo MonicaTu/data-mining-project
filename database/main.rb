@@ -8,6 +8,7 @@ require_relative 'dm_create_views_concept_feature'
 require_relative 'dm_export_concept_feature'
 require_relative 'dm_create_table_allfeatures'
 require_relative 'dm_parse_attributes'
+require_relative 'dm_prepare_train_set'
 require_relative 'dm_prepare_test_set'
 
 def initial_database
@@ -77,12 +78,13 @@ def data_mining(concept_id)
   # TODO: limit N-num = Y-num
 #  norm_arff = weka_normalization(csv, 'last')
 #  rm_file(csv) # !!! remove file !!!
-#  train_arff = weka_attribute_selection(norm_arff, 'last')
+#  attr_arff = weka_attribute_selection(norm_arff, 'last')
 #  rm_file(norm_arff) # !!! remove file !!!
 
-train_arff = 'attribute_selection-normalized-c0_AutoColorCorrelogram_CEDD_ColorLayout_EdgeHistogram_FCTH_Gabor_JCD_JpegCH_ScalableColor_Tamura.arff'
+attr_arff = 'attribute_selection-normalized-c0_AutoColorCorrelogram_CEDD_ColorLayout_FCTH_Gabor_JCD_JpegCH_ScalableColor_Tamura.arff'
   # prepare test set
-  attributes = dm_parse_attributes(train_arff)
+  attributes = dm_parse_attributes(attr_arff)
+  train_arff = dm_prepare_train_set(concept_id, attributes, @dbTrain)
   test_arff = dm_prepare_test_set(concept_id, attributes, @dbTest)
 
   # classify

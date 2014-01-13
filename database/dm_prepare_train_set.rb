@@ -7,7 +7,7 @@ require_relative 'dm_create_table_allfeatures'
 require_relative 'dm_create_views_concept_feature'
 require_relative 'dm_export_concept_feature'
 
-def dm_prepare_test_set(concept_id, attributes, dbFile) 
+def dm_prepare_train_set(concept_id, attributes, dbFile) 
   # create table allfeatures
   allfeatures = dm_create_table_allfeatures(dbFile, @features)
 
