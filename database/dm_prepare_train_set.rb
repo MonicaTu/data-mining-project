@@ -17,12 +17,13 @@ def dm_prepare_train_set(concept_id, attributes, dbFile)
   attributes.each_with_index do |attr, i|
     attrs = (i == 0) ? "#{attr}" : "#{attrs}, #{attr}"
   end
-  selectedfeatures = "#{File.basename(dbFile, ".*")}_selectedfeatures"
+  selectedfeatures = 'train_selectedfeatures'
   query = "SELECT #{attrs} FROM #{allfeatures}"
   db_create_table_as_schema(dbFile, selectedfeatures, query)
 
   # export view selectedfeatures
   csv = dm_export_concept_feature(dbFile, concept_id, selectedfeatures)
+  db_drop_table(dbFile, selectedfeatures) # !!! drop table !!!
   y_num = File.open(csv).read.scan(/Y/).count
   exesh("sed -i '#{y_num*2},15001d' #{csv}") # !!! cut file !!!
 

@@ -72,20 +72,21 @@ def data_mining(concept_id)
   allfeatures = dm_create_table_allfeatures(@dbTrain, @features)
 
   # export view allfeatures
-  csv = dm_export_concept_feature(@dbTrain, concept_id, allfeatures)
+#  csv = dm_export_concept_feature(@dbTrain, concept_id, allfeatures)
 
   # feature selection w/ concept_allfeatures
   # TODO: limit N-num = Y-num
-  norm_arff = weka_normalization(csv, 'last')
-  rm_file(csv) # !!! remove file !!!
-  attr_arff = weka_attribute_selection(norm_arff, 'last')
-  rm_file(norm_arff) # !!! remove file !!!
+#  norm_arff = weka_normalization(csv, 'last')
+#  rm_file(csv) # !!! remove file !!!
+#  attr_arff = weka_attribute_selection(norm_arff, 'last')
+#  rm_file(norm_arff) # !!! remove file !!!
 
+attr_arff = "./selected-features/c#{concept_id}_train_selectedfeatures-normalized-selectedattribues.arff"
   # prepare train & test set
   attributes = dm_parse_attributes(attr_arff)
-  output = "#{File.basename(attr_arff, ".*")}.txt"
-  write_file(output, attributes)
-  rm_file(attr_arff) # !!! remove file !!!
+#  output = "#{File.basename(attr_arff, ".*")}.txt"
+#  write_file(output, attributes)
+#  rm_file(attr_arff) # !!! remove file !!!
   # TODO: normalization? 
   train_arff = dm_prepare_train_set(concept_id, attributes, @dbTrain)
   test_arff = dm_prepare_test_set(concept_id, attributes, @dbTest)
@@ -135,6 +136,7 @@ if __FILE__ == $0
 
   initial_database
 #  dimensionality_reduction
+#    data_mining(9)
   @concept_num.times do |i|
     data_mining(i)
   end
