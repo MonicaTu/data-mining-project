@@ -1,0 +1,13 @@
+@attribute CEDD20 numeric
+@attribute CEDD23 numeric
+@attribute Gabor0 numeric
+@attribute JpegCH16 numeric
+@attribute JpegCH31 numeric
+@attribute JpegCH119 numeric
+@attribute ScalableColor6 numeric
+@attribute ScalableColor7 numeric
+@attribute Tamura1 numeric
+@attribute Tamura6 numeric
+@attribute Tamura8 numeric
+@attribute Tamura10 numeric
+@attribute Tamura16 numeric

@@ -1,0 +1,1 @@
+["AutoColorCorrelogram85", "ColorLayout5", "ColorLayout32", "ColorLayout56", "ColorLayout63", "ColorLayout69", "FCTH79", "FCTH151", "JpegCH27", "ScalableColor7", "ScalableColor23", "Tamura11"]

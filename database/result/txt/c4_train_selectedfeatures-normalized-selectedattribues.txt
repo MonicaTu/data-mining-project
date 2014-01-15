@@ -1,0 +1,1 @@
+["AutoColorCorrelogram160", "AutoColorCorrelogram162", "CEDD11", "ColorLayout0", "ColorLayout25", "FCTH69", "Gabor1", "Gabor3", "JCD20", "JpegCH20", "JpegCH23", "JpegCH56", "JpegCH142", "JpegCH151", "JpegCH190", "ScalableColor6", "Tamura0", "Tamura5", "Tamura8", "Tamura11", "Tamura12", "Tamura13"]

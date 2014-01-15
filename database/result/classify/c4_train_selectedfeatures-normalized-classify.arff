@@ -1,0 +1,175 @@
+
+Naive Bayes Classifier
+
+                            Class
+Attribute                       Y       N
+                            (0.5)   (0.5)
+==========================================
+AutoColorCorrelogram160
+  mean                      0.1471  0.0567
+  std. dev.                 0.3069  0.1357
+  weight sum                   101     101
+  precision                 0.0066  0.0066
+
+AutoColorCorrelogram162
+  mean                      0.1426  0.0513
+  std. dev.                 0.3059   0.133
+  weight sum                   101     101
+  precision                 0.0067  0.0067
+
+CEDD11
+  mean                      0.0132  0.0165
+  std. dev.                 0.1041  0.0723
+  weight sum                   101     101
+  precision                 0.3333  0.3333
+
+ColorLayout0
+  mean                      0.1942  0.4092
+  std. dev.                  0.195  0.2291
+  weight sum                   101     101
+  precision                 0.0238  0.0238
+
+ColorLayout25
+  mean                      0.3312  0.3114
+  std. dev.                 0.1549  0.1421
+  weight sum                   101     101
+  precision                 0.0909  0.0909
+
+FCTH69
+  mean                      0.0099       0
+  std. dev.                 0.1667  0.1667
+  weight sum                   101     101
+  precision                      1       1
+
+Gabor1
+  mean                       0.446  0.5511
+  std. dev.                 0.1854  0.1573
+  weight sum                   101     101
+  precision                  0.005   0.005
+
+Gabor3
+  mean                      0.4458  0.5515
+  std. dev.                 0.1856  0.1577
+  weight sum                   101     101
+  precision                  0.005   0.005
+
+JCD20
+  mean                      0.3182  0.1209
+  std. dev.                 0.3334  0.1705
+  weight sum                   101     101
+  precision                 0.0714  0.0714
+
+JpegCH20
+  mean                      0.3997   0.331
+  std. dev.                 0.2847  0.2226
+  weight sum                   101     101
+  precision                 0.0083  0.0083
+
+JpegCH23
+  mean                      0.4246  0.4014
+  std. dev.                 0.2952  0.2483
+  weight sum                   101     101
+  precision                 0.0074  0.0074
+
+JpegCH56
+  mean                      0.2567  0.3011
+  std. dev.                 0.2073  0.2464
+  weight sum                   101     101
+  precision                 0.0086  0.0086
+
+JpegCH142
+  mean                      0.3234  0.3541
+  std. dev.                 0.2187   0.193
+  weight sum                   101     101
+  precision                 0.0082  0.0082
+
+JpegCH151
+  mean                      0.4356  0.4663
+  std. dev.                 0.2732   0.217
+  weight sum                   101     101
+  precision                 0.0074  0.0074
+
+JpegCH190
+  mean                      0.4901  0.5395
+  std. dev.                 0.3084  0.2414
+  weight sum                   101     101
+  precision                 0.0075  0.0075
+
+ScalableColor6
+  mean                      0.5475  0.5288
+  std. dev.                 0.1707  0.1151
+  weight sum                   101     101
+  precision                 0.0196  0.0196
+
+Tamura0
+  mean                      0.7553   0.779
+  std. dev.                 0.2013  0.1005
+  weight sum                   101     101
+  precision                 0.0052  0.0052
+
+Tamura5
+  mean                      0.3428  0.3392
+  std. dev.                 0.1739  0.1007
+  weight sum                   101     101
+  precision                 0.0075  0.0075
+
+Tamura8
+  mean                      0.2964  0.3454
+  std. dev.                 0.2081  0.1409
+  weight sum                   101     101
+  precision                 0.0074  0.0074
+
+Tamura11
+  mean                      0.3826  0.4442
+  std. dev.                 0.2229   0.136
+  weight sum                   101     101
+  precision                 0.0074  0.0074
+
+Tamura12
+  mean                      0.3835  0.4125
+  std. dev.                 0.1904  0.1164
+  weight sum                   101     101
+  precision                 0.0085  0.0085
+
+Tamura13
+  mean                      0.3255  0.3182
+  std. dev.                 0.1481  0.1026
+  weight sum                   101     101
+  precision                 0.0076  0.0076
+
+
+
+Time taken to build model: 0.02 seconds
+Time taken to test model on training data: 0.04 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         154               76.2376 %
+Incorrectly Classified Instances        48               23.7624 %
+Kappa statistic                          0.5248
+Mean absolute error                      0.2407
+Root mean squared error                  0.4478
+Relative absolute error                 48.1488 %
+Root relative squared error             89.5573 %
+Total Number of Instances              202     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.634     0.109      0.853     0.634     0.727      0.866    Y
+                 0.891     0.366      0.709     0.891     0.789      0.865    N
+Weighted Avg.    0.762     0.238      0.781     0.762     0.758      0.865
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        4837               48.37   %
+Incorrectly Classified Instances      5163               51.63   %
+Kappa statistic                          0.0087
+Mean absolute error                      0.5291
+Root mean squared error                  0.6419
+Relative absolute error                105.8142 %
+Root relative squared error            128.371  %
+Total Number of Instances            10000     
+

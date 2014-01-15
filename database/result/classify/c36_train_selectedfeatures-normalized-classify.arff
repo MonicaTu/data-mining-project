@@ -1,0 +1,67 @@
+
+Naive Bayes Classifier
+
+                           Class
+Attribute                      Y       N
+                           (0.5)   (0.5)
+=========================================
+AutoColorCorrelogram19
+  mean                     0.2428  0.1216
+  std. dev.                0.3175  0.2201
+  weight sum                  106     106
+  precision                0.0055  0.0055
+
+ColorLayout85
+  mean                     0.2332  0.2412
+  std. dev.                0.1044  0.0769
+  weight sum                  106     106
+  precision                0.1429  0.1429
+
+ColorLayout95
+  mean                     0.4893  0.4465
+  std. dev.                0.0897  0.1584
+  weight sum                  106     106
+  precision                0.0667  0.0667
+
+FCTH107
+  mean                          0  0.0283
+  std. dev.                0.1667  0.1667
+  weight sum                  106     106
+  precision                     1       1
+
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         137               64.6226 %
+Incorrectly Classified Instances        75               35.3774 %
+Kappa statistic                          0.2925
+Mean absolute error                      0.4121
+Root mean squared error                  0.4644
+Relative absolute error                 82.4275 %
+Root relative squared error             92.8893 %
+Total Number of Instances              212     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.519     0.226      0.696     0.519     0.595      0.708    Y
+                 0.774     0.481      0.617     0.774     0.686      0.708    N
+Weighted Avg.    0.646     0.354      0.656     0.646     0.64       0.708
+
+
+=== Error on test data ===
+
+Correctly Classified Instances         809                8.09   %
+Incorrectly Classified Instances      9191               91.91   %
+Kappa statistic                         -0.0001
+Mean absolute error                      0.7908
+Root mean squared error                  0.8197
+Relative absolute error                158.1524 %
+Root relative squared error            163.9434 %
+Total Number of Instances            10000     
+

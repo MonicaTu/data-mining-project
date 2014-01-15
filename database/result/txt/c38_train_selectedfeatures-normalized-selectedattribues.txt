@@ -1,0 +1,1 @@
+["AutoColorCorrelogram55", "CEDD9", "CEDD10", "CEDD34", "CEDD59", "CEDD78", "ColorLayout3", "ColorLayout8", "ColorLayout66", "FCTH4", "FCTH14", "FCTH20", "FCTH21", "JCD10", "JCD26", "JCD35", "JCD154", "ScalableColor11", "ScalableColor46", "Tamura11"]

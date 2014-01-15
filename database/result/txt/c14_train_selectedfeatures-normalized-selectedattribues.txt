@@ -1,0 +1,1 @@
+["CEDD5", "CEDD62", "ColorLayout27", "FCTH33", "FCTH79", "JCD2", "JCD39", "JCD127", "JpegCH5", "JpegCH9", "JpegCH20", "ScalableColor3", "ScalableColor7", "ScalableColor39", "Tamura8"]

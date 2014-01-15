@@ -1,0 +1,1 @@
+["CEDD20", "CEDD23", "Gabor0", "JpegCH16", "JpegCH31", "JpegCH119", "ScalableColor6", "ScalableColor7", "Tamura1", "Tamura6", "Tamura8", "Tamura10", "Tamura16"]

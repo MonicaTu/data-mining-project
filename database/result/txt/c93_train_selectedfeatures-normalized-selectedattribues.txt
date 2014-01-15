@@ -1,0 +1,1 @@
+["AutoColorCorrelogram0", "CEDD1", "CEDD6", "CEDD11", "CEDD18", "CEDD138", "ColorLayout0", "ColorLayout18", "ColorLayout92", "ColorLayout112", "JCD11", "JpegCH2", "JpegCH27", "JpegCH40", "JpegCH46", "JpegCH78", "Tamura2", "Tamura10"]

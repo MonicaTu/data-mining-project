@@ -1,0 +1,79 @@
+
+Naive Bayes Classifier
+
+                  Class
+Attribute             Y       N
+                  (0.5)   (0.5)
+================================
+CEDD36
+  mean             0.125  0.0625
+  std. dev.       0.3307  0.1654
+  weight sum          16      16
+  precision          0.5     0.5
+
+CEDD84
+  mean            0.1406  0.0938
+  std. dev.       0.3303  0.1952
+  weight sum          16      16
+  precision         0.25    0.25
+
+ColorLayout64
+  mean            0.3464  0.5208
+  std. dev.       0.2213  0.2057
+  weight sum          16      16
+  precision       0.0417  0.0417
+
+JCD6
+  mean            0.2639  0.2292
+  std. dev.       0.3399  0.3203
+  weight sum          16      16
+  precision       0.1111  0.1111
+
+JCD156
+  mean             0.125  0.0625
+  std. dev.       0.3307  0.1654
+  weight sum          16      16
+  precision          0.5     0.5
+
+JpegCH32
+  mean            0.2134  0.4828
+  std. dev.       0.1183  0.2398
+  weight sum          16      16
+  precision       0.0345  0.0345
+
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          22               68.75   %
+Incorrectly Classified Instances        10               31.25   %
+Kappa statistic                          0.375 
+Mean absolute error                      0.3479
+Root mean squared error                  0.466 
+Relative absolute error                 69.579  %
+Root relative squared error             93.204  %
+Total Number of Instances               32     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.625     0.25       0.714     0.625     0.667      0.777    Y
+                 0.75      0.375      0.667     0.75      0.706      0.777    N
+Weighted Avg.    0.688     0.313      0.69      0.688     0.686      0.777
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        7177               71.77   %
+Incorrectly Classified Instances      2823               28.23   %
+Kappa statistic                          0.002 
+Mean absolute error                      0.3465
+Root mean squared error                  0.4278
+Relative absolute error                 69.2911 %
+Root relative squared error             85.5506 %
+Total Number of Instances            10000     
+

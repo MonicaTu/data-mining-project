@@ -1,0 +1,133 @@
+
+Naive Bayes Classifier
+
+                    Class
+Attribute               Y       N
+                    (0.5)   (0.5)
+==================================
+CEDD5
+  mean              0.0873  0.0282
+  std. dev.          0.183  0.0907
+  weight sum            71      71
+  precision            0.2     0.2
+
+CEDD62
+  mean              0.0211  0.0845
+  std. dev.         0.0695  0.2178
+  weight sum            71      71
+  precision           0.25    0.25
+
+ColorLayout27
+  mean              0.4919  0.5211
+  std. dev.          0.089  0.1467
+  weight sum            71      71
+  precision         0.0769  0.0769
+
+FCTH33
+  mean              0.0141  0.0563
+  std. dev.         0.0833   0.179
+  weight sum            71      71
+  precision            0.5     0.5
+
+FCTH79
+  mean              0.1056  0.0423
+  std. dev.         0.2897  0.1391
+  weight sum            71      71
+  precision            0.5     0.5
+
+JCD2
+  mean              0.5746  0.4244
+  std. dev.         0.2895  0.2944
+  weight sum            71      71
+  precision         0.0667  0.0667
+
+JCD39
+  mean              0.0376  0.0423
+  std. dev.         0.1054  0.1473
+  weight sum            71      71
+  precision         0.3333  0.3333
+
+JCD127
+  mean              0.0892  0.0282
+  std. dev.         0.2561  0.0927
+  weight sum            71      71
+  precision         0.3333  0.3333
+
+JpegCH5
+  mean              0.5351  0.4254
+  std. dev.         0.2177  0.2631
+  weight sum            71      71
+  precision           0.01    0.01
+
+JpegCH9
+  mean              0.3556  0.3145
+  std. dev.         0.1725  0.2385
+  weight sum            71      71
+  precision           0.01    0.01
+
+JpegCH20
+  mean              0.4368  0.3355
+  std. dev.         0.2315  0.2371
+  weight sum            71      71
+  precision         0.0105  0.0105
+
+ScalableColor3
+  mean              0.4806  0.4208
+  std. dev.         0.1867  0.1353
+  weight sum            71      71
+  precision         0.0204  0.0204
+
+ScalableColor7
+  mean               0.536  0.5268
+  std. dev.         0.2066  0.1318
+  weight sum            71      71
+  precision         0.0286  0.0286
+
+ScalableColor39
+  mean              0.6831  0.7544
+  std. dev.         0.3064  0.2304
+  weight sum            71      71
+  precision         0.0625  0.0625
+
+Tamura8
+  mean              0.2973  0.3457
+  std. dev.         0.1329  0.1485
+  weight sum            71      71
+  precision         0.0099  0.0099
+
+
+
+Time taken to build model: 0.02 seconds
+Time taken to test model on training data: 0.03 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          90               63.3803 %
+Incorrectly Classified Instances        52               36.6197 %
+Kappa statistic                          0.2676
+Mean absolute error                      0.3619
+Root mean squared error                  0.5173
+Relative absolute error                 72.3877 %
+Root relative squared error            103.4699 %
+Total Number of Instances              142     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.507     0.239      0.679     0.507     0.581      0.738    Y
+                 0.761     0.493      0.607     0.761     0.675      0.738    N
+Weighted Avg.    0.634     0.366      0.643     0.634     0.628      0.738
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        7791               77.91   %
+Incorrectly Classified Instances      2209               22.09   %
+Kappa statistic                          0.0042
+Mean absolute error                      0.2852
+Root mean squared error                  0.4084
+Relative absolute error                 57.0477 %
+Root relative squared error             81.6847 %
+Total Number of Instances            10000     
+

@@ -1,0 +1,5 @@
+@attribute ColorLayout5 numeric
+@attribute ColorLayout16 numeric
+@attribute JCD17 numeric
+@attribute JpegCH29 numeric
+@attribute JpegCH184 numeric

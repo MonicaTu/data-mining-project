@@ -1,0 +1,67 @@
+
+Naive Bayes Classifier
+
+                   Class
+Attribute              Y       N
+                   (0.5)   (0.5)
+=================================
+CEDD126
+  mean             0.2839  0.1059
+  std. dev.        0.2741  0.1795
+  weight sum           59      59
+  precision          0.25    0.25
+
+FCTH60
+  mean             0.0339  0.0113
+  std. dev.        0.1588  0.0603
+  weight sum           59      59
+  precision        0.3333  0.3333
+
+JpegCH162
+  mean             0.3347  0.2658
+  std. dev.        0.2081  0.2332
+  weight sum           59      59
+  precision        0.0127  0.0127
+
+ScalableColor6
+  mean             0.6195  0.6189
+  std. dev.        0.1686  0.2135
+  weight sum           59      59
+  precision        0.0323  0.0323
+
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          76               64.4068 %
+Incorrectly Classified Instances        42               35.5932 %
+Kappa statistic                          0.2881
+Mean absolute error                      0.3948
+Root mean squared error                  0.4762
+Relative absolute error                 78.9543 %
+Root relative squared error             95.2335 %
+Total Number of Instances              118     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.458     0.169      0.73      0.458     0.563      0.72     Y
+                 0.831     0.542      0.605     0.831     0.7        0.72     N
+Weighted Avg.    0.644     0.356      0.667     0.644     0.631      0.72 
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        8711               87.11   %
+Incorrectly Classified Instances      1289               12.89   %
+Kappa statistic                          0.0214
+Mean absolute error                      0.3497
+Root mean squared error                  0.3985
+Relative absolute error                 69.9495 %
+Root relative squared error             79.7075 %
+Total Number of Instances            10000     
+

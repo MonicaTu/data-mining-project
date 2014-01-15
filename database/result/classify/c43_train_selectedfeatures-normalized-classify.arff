@@ -1,0 +1,97 @@
+
+Naive Bayes Classifier
+
+                  Class
+Attribute             Y       N
+                  (0.5)   (0.5)
+================================
+CEDD13
+  mean            0.0813  0.0438
+  std. dev.       0.2331  0.1758
+  weight sum          40      40
+  precision         0.25    0.25
+
+CEDD134
+  mean            0.1417  0.0583
+  std. dev.       0.2971  0.1267
+  weight sum          40      40
+  precision       0.3333  0.3333
+
+ColorLayout8
+  mean            0.5926  0.5559
+  std. dev.       0.2035  0.1556
+  weight sum          40      40
+  precision       0.0588  0.0588
+
+ColorLayout73
+  mean               0.4  0.3068
+  std. dev.       0.2159  0.0989
+  weight sum          40      40
+  precision       0.0909  0.0909
+
+ColorLayout75
+  mean            0.5425   0.595
+  std. dev.       0.1999  0.0893
+  weight sum          40      40
+  precision          0.1     0.1
+
+FCTH81
+  mean             0.175       0
+  std. dev.         0.38  0.1667
+  weight sum          40      40
+  precision            1       1
+
+FCTH84
+  mean             0.025   0.025
+  std. dev.       0.1561   0.109
+  weight sum          40      40
+  precision          0.5     0.5
+
+JCD132
+  mean             0.025   0.025
+  std. dev.       0.1561   0.109
+  weight sum          40      40
+  precision          0.5     0.5
+
+JpegCH6
+  mean            0.2516  0.4484
+  std. dev.       0.1956  0.2698
+  weight sum          40      40
+  precision       0.0156  0.0156
+
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          56               70      %
+Incorrectly Classified Instances        24               30      %
+Kappa statistic                          0.4   
+Mean absolute error                      0.2956
+Root mean squared error                  0.466 
+Relative absolute error                 59.1109 %
+Root relative squared error             93.1931 %
+Total Number of Instances               80     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.525     0.125      0.808     0.525     0.636      0.826    Y
+                 0.875     0.475      0.648     0.875     0.745      0.826    N
+Weighted Avg.    0.7       0.3        0.728     0.7       0.691      0.826
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        6743               67.43   %
+Incorrectly Classified Instances      3257               32.57   %
+Kappa statistic                          0.005 
+Mean absolute error                      0.3771
+Root mean squared error                  0.4862
+Relative absolute error                 75.412  %
+Root relative squared error             97.2442 %
+Total Number of Instances            10000     
+

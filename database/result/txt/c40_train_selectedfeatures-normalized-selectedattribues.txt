@@ -1,0 +1,1 @@
+["AutoColorCorrelogram48", "CEDD18", "CEDD19", "CEDD21", "ColorLayout29", "ColorLayout72", "FCTH28", "FCTH151", "JCD18", "JpegCH70"]

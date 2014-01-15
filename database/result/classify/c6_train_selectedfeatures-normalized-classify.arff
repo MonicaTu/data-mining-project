@@ -1,0 +1,109 @@
+
+Naive Bayes Classifier
+
+                            Class
+Attribute                       Y       N
+                            (0.5)   (0.5)
+==========================================
+AutoColorCorrelogram252
+  mean                      0.0061  0.0234
+  std. dev.                 0.0546  0.1176
+  weight sum                  1105    1105
+  precision                 0.0017  0.0017
+
+CEDD18
+  mean                      0.2312  0.0437
+  std. dev.                  0.263  0.1174
+  weight sum                  1105    1105
+  precision                 0.1429  0.1429
+
+CEDD19
+  mean                      0.1979  0.0321
+  std. dev.                 0.2646  0.1169
+  weight sum                  1105    1105
+  precision                 0.1429  0.1429
+
+CEDD96
+  mean                      0.0319   0.079
+  std. dev.                  0.093  0.1444
+  weight sum                  1105    1105
+  precision                   0.25    0.25
+
+ColorLayout45
+  mean                      0.4995  0.4998
+  std. dev.                 0.1288  0.1405
+  weight sum                  1105    1105
+  precision                 0.1429  0.1429
+
+ColorLayout66
+  mean                      0.6128  0.4739
+  std. dev.                  0.184  0.1459
+  weight sum                  1105    1105
+  precision                 0.0357  0.0357
+
+FCTH108
+  mean                           0  0.0023
+  std. dev.                 0.0833  0.0833
+  weight sum                  1105    1105
+  precision                    0.5     0.5
+
+JpegCH1
+  mean                      0.3602  0.5982
+  std. dev.                 0.3011  0.3315
+  weight sum                  1105    1105
+  precision                 0.0039  0.0039
+
+JpegCH27
+  mean                      0.3846  0.2847
+  std. dev.                 0.2393  0.1912
+  weight sum                  1105    1105
+  precision                 0.0042  0.0042
+
+ScalableColor21
+  mean                      0.4931  0.4915
+  std. dev.                 0.0578  0.0743
+  weight sum                  1105    1105
+  precision                 0.0244  0.0244
+
+Tamura12
+  mean                      0.2055   0.196
+  std. dev.                 0.0752  0.0535
+  weight sum                  1105    1105
+  precision                 0.0037  0.0037
+
+
+
+Time taken to build model: 0.05 seconds
+Time taken to test model on training data: 0.07 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances        1651               74.7059 %
+Incorrectly Classified Instances       559               25.2941 %
+Kappa statistic                          0.4941
+Mean absolute error                      0.2792
+Root mean squared error                  0.4404
+Relative absolute error                 55.8359 %
+Root relative squared error             88.088  %
+Total Number of Instances             2210     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.66      0.166      0.799     0.66      0.723      0.817    Y
+                 0.834     0.34       0.71      0.834     0.767      0.817    N
+Weighted Avg.    0.747     0.253      0.755     0.747     0.745      0.817
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        8159               81.59   %
+Incorrectly Classified Instances      1841               18.41   %
+Kappa statistic                          0.254 
+Mean absolute error                      0.2526
+Root mean squared error                  0.3923
+Relative absolute error                 50.5244 %
+Root relative squared error             78.4684 %
+Total Number of Instances            10000     
+

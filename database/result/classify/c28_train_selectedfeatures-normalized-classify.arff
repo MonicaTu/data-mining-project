@@ -1,0 +1,505 @@
+
+Naive Bayes Classifier
+
+                            Class
+Attribute                       Y       N
+                            (0.5)   (0.5)
+==========================================
+AutoColorCorrelogram50
+  mean                      0.0167  0.0487
+  std. dev.                 0.0612  0.1424
+  weight sum                   369     369
+  precision                  0.002   0.002
+
+AutoColorCorrelogram84
+  mean                      0.0001  0.0056
+  std. dev.                 0.0018  0.0577
+  weight sum                   369     369
+  precision                 0.0105  0.0105
+
+AutoColorCorrelogram140
+  mean                      0.2867  0.1052
+  std. dev.                 0.3753  0.2458
+  weight sum                   369     369
+  precision                 0.0024  0.0024
+
+AutoColorCorrelogram142
+  mean                      0.2844  0.1039
+  std. dev.                 0.3755  0.2467
+  weight sum                   369     369
+  precision                 0.0024  0.0024
+
+AutoColorCorrelogram143
+  mean                      0.2835  0.1033
+  std. dev.                 0.3755  0.2466
+  weight sum                   369     369
+  precision                 0.0025  0.0025
+
+AutoColorCorrelogram151
+  mean                      0.1467  0.0564
+  std. dev.                 0.2764  0.1816
+  weight sum                   369     369
+  precision                  0.003   0.003
+
+AutoColorCorrelogram249
+  mean                      0.0052  0.0138
+  std. dev.                 0.0354  0.0681
+  weight sum                   369     369
+  precision                 0.0022  0.0022
+
+CEDD15
+  mean                      0.0723  0.0221
+  std. dev.                 0.1464  0.0936
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+CEDD17
+  mean                      0.0592  0.0266
+  std. dev.                 0.1346   0.104
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+CEDD18
+  mean                      0.2249  0.0687
+  std. dev.                 0.2735  0.1708
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+CEDD19
+  mean                      0.1332  0.0437
+  std. dev.                 0.2095  0.1302
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+CEDD20
+  mean                      0.1757  0.0723
+  std. dev.                  0.229  0.1549
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+CEDD64
+  mean                      0.0604  0.0163
+  std. dev.                 0.1626  0.0826
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+CEDD65
+  mean                      0.1285  0.0414
+  std. dev.                 0.2183  0.1253
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+CEDD66
+  mean                      0.2609  0.0925
+  std. dev.                 0.3135  0.1837
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+CEDD73
+  mean                      0.3128  0.4878
+  std. dev.                 0.2562  0.3344
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+CEDD75
+  mean                      0.0086  0.0524
+  std. dev.                 0.0506  0.1376
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+CEDD80
+  mean                      0.1491  0.3082
+  std. dev.                 0.1907  0.3056
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+CEDD82
+  mean                      0.0117  0.0664
+  std. dev.                  0.059  0.1629
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+CEDD95
+  mean                      0.0014  0.0169
+  std. dev.                 0.0417  0.0932
+  weight sum                   369     369
+  precision                   0.25    0.25
+
+CEDD123
+  mean                      0.0014  0.0339
+  std. dev.                 0.0833  0.1409
+  weight sum                   369     369
+  precision                    0.5     0.5
+
+ColorLayout2
+  mean                      0.6892  0.5385
+  std. dev.                  0.233  0.2416
+  weight sum                   369     369
+  precision                 0.0345  0.0345
+
+ColorLayout16
+  mean                      0.4278   0.443
+  std. dev.                 0.0738  0.1256
+  weight sum                   369     369
+  precision                 0.0667  0.0667
+
+ColorLayout25
+  mean                      0.5139  0.5203
+  std. dev.                 0.0797   0.119
+  weight sum                   369     369
+  precision                 0.0769  0.0769
+
+ColorLayout28
+  mean                      0.5095  0.4991
+  std. dev.                 0.0769  0.1238
+  weight sum                   369     369
+  precision                 0.0909  0.0909
+
+ColorLayout29
+  mean                      0.4998  0.5002
+  std. dev.                 0.0843  0.1342
+  weight sum                   369     369
+  precision                 0.1111  0.1111
+
+ColorLayout30
+  mean                      0.4585  0.4515
+  std. dev.                 0.0867  0.1411
+  weight sum                   369     369
+  precision                    0.1     0.1
+
+ColorLayout39
+  mean                      0.6179  0.6034
+  std. dev.                 0.0871  0.1369
+  weight sum                   369     369
+  precision                 0.1111  0.1111
+
+ColorLayout40
+  mean                      0.5674  0.5664
+  std. dev.                  0.096  0.1469
+  weight sum                   369     369
+  precision                  0.125   0.125
+
+ColorLayout52
+  mean                        0.43  0.4151
+  std. dev.                 0.1026  0.1538
+  weight sum                   369     369
+  precision                 0.1667  0.1667
+
+ColorLayout58
+  mean                       0.497  0.5127
+  std. dev.                 0.1169  0.1438
+  weight sum                   369     369
+  precision                    0.2     0.2
+
+ColorLayout59
+  mean                      0.5073  0.5209
+  std. dev.                 0.1081  0.1285
+  weight sum                   369     369
+  precision                    0.2     0.2
+
+ColorLayout62
+  mean                      0.5079  0.5046
+  std. dev.                  0.111  0.1366
+  weight sum                   369     369
+  precision                    0.2     0.2
+
+ColorLayout66
+  mean                      0.5657  0.4939
+  std. dev.                 0.1956  0.1567
+  weight sum                   369     369
+  precision                 0.0357  0.0357
+
+ColorLayout104
+  mean                      0.5561  0.5664
+  std. dev.                 0.0778  0.1053
+  weight sum                   369     369
+  precision                 0.0714  0.0714
+
+ColorLayout106
+  mean                      0.6911  0.6898
+  std. dev.                 0.0755  0.0832
+  weight sum                   369     369
+  precision                 0.0909  0.0909
+
+ColorLayout107
+  mean                      0.5014  0.4993
+  std. dev.                 0.0431  0.0713
+  weight sum                   369     369
+  precision                  0.125   0.125
+
+FCTH18
+  mean                      0.4073  0.1781
+  std. dev.                   0.38  0.2813
+  weight sum                   369     369
+  precision                 0.1429  0.1429
+
+FCTH37
+  mean                           0  0.0027
+  std. dev.                 0.0833  0.0833
+  weight sum                   369     369
+  precision                    0.5     0.5
+
+FCTH39
+  mean                      0.0589  0.0136
+  std. dev.                 0.1487   0.065
+  weight sum                   369     369
+  precision                   0.25    0.25
+
+FCTH82
+  mean                           0   0.019
+  std. dev.                 0.1667  0.1667
+  weight sum                   369     369
+  precision                      1       1
+
+JCD39
+  mean                      0.0973  0.0249
+  std. dev.                 0.1771  0.0843
+  weight sum                   369     369
+  precision                 0.0909  0.0909
+
+JCD43
+  mean                      0.1065  0.0371
+  std. dev.                 0.2011  0.1138
+  weight sum                   369     369
+  precision                    0.1     0.1
+
+JCD74
+  mean                      0.1081  0.2398
+  std. dev.                 0.1553  0.2189
+  weight sum                   369     369
+  precision                    0.1     0.1
+
+JpegCH1
+  mean                      0.2819  0.5786
+  std. dev.                 0.2549  0.3299
+  weight sum                   369     369
+  precision                 0.0046  0.0046
+
+JpegCH2
+  mean                      0.1763  0.4162
+  std. dev.                 0.1589  0.2379
+  weight sum                   369     369
+  precision                 0.0051  0.0051
+
+JpegCH3
+  mean                      0.1897  0.3826
+  std. dev.                 0.1497  0.2089
+  weight sum                   369     369
+  precision                 0.0053  0.0053
+
+JpegCH4
+  mean                      0.2545  0.4005
+  std. dev.                 0.1924  0.2265
+  weight sum                   369     369
+  precision                 0.0049  0.0049
+
+JpegCH8
+  mean                      0.6588   0.502
+  std. dev.                 0.3363  0.3314
+  weight sum                   369     369
+  precision                 0.0046  0.0046
+
+JpegCH9
+  mean                      0.2004  0.3446
+  std. dev.                 0.1661  0.2524
+  weight sum                   369     369
+  precision                 0.0053  0.0053
+
+JpegCH10
+  mean                      0.1715  0.2951
+  std. dev.                 0.1393  0.2131
+  weight sum                   369     369
+  precision                 0.0057  0.0057
+
+JpegCH22
+  mean                      0.2399  0.3423
+  std. dev.                  0.175    0.23
+  weight sum                   369     369
+  precision                 0.0053  0.0053
+
+JpegCH40
+  mean                       0.568   0.307
+  std. dev.                 0.2481  0.2346
+  weight sum                   369     369
+  precision                 0.0043  0.0043
+
+JpegCH48
+  mean                      0.5811  0.3022
+  std. dev.                 0.2666  0.2365
+  weight sum                   369     369
+  precision                 0.0042  0.0042
+
+JpegCH56
+  mean                      0.5838  0.2994
+  std. dev.                  0.288  0.2499
+  weight sum                   369     369
+  precision                 0.0043  0.0043
+
+JpegCH57
+  mean                      0.5298  0.3222
+  std. dev.                  0.271  0.2289
+  weight sum                   369     369
+  precision                 0.0045  0.0045
+
+JpegCH61
+  mean                      0.3852  0.3788
+  std. dev.                 0.2376  0.2594
+  weight sum                   369     369
+  precision                 0.0047  0.0047
+
+JpegCH66
+  mean                      0.3316  0.4692
+  std. dev.                 0.1749   0.217
+  weight sum                   369     369
+  precision                 0.0049  0.0049
+
+JpegCH68
+  mean                      0.2572  0.3764
+  std. dev.                 0.1464  0.2036
+  weight sum                   369     369
+  precision                 0.0054  0.0054
+
+JpegCH88
+  mean                      0.5604  0.3549
+  std. dev.                 0.3051  0.2557
+  weight sum                   369     369
+  precision                 0.0042  0.0042
+
+JpegCH135
+  mean                      0.3547   0.448
+  std. dev.                 0.1918  0.2251
+  weight sum                   369     369
+  precision                 0.0052  0.0052
+
+JpegCH144
+  mean                      0.3843  0.2601
+  std. dev.                 0.2602  0.2284
+  weight sum                   369     369
+  precision                 0.0047  0.0047
+
+JpegCH160
+  mean                      0.4515  0.2873
+  std. dev.                 0.2715  0.2313
+  weight sum                   369     369
+  precision                 0.0044  0.0044
+
+JpegCH184
+  mean                      0.5616  0.3167
+  std. dev.                 0.2911  0.2312
+  weight sum                   369     369
+  precision                 0.0044  0.0044
+
+JpegCH185
+  mean                       0.521  0.3486
+  std. dev.                 0.2437  0.2133
+  weight sum                   369     369
+  precision                 0.0045  0.0045
+
+Tamura0
+  mean                      0.7467  0.6861
+  std. dev.                 0.1405  0.1541
+  weight sum                   369     369
+  precision                 0.0015  0.0015
+
+Tamura2
+  mean                      0.0653  0.1156
+  std. dev.                 0.0673  0.1139
+  weight sum                   369     369
+  precision                 0.0028  0.0028
+
+Tamura4
+  mean                      0.3361  0.4488
+  std. dev.                 0.1307  0.1494
+  weight sum                   369     369
+  precision                 0.0053  0.0053
+
+Tamura5
+  mean                      0.3414  0.4122
+  std. dev.                 0.1327  0.1225
+  weight sum                   369     369
+  precision                 0.0048  0.0048
+
+Tamura8
+  mean                      0.3382  0.2322
+  std. dev.                 0.1093  0.0862
+  weight sum                   369     369
+  precision                 0.0039  0.0039
+
+Tamura9
+  mean                      0.2629  0.1565
+  std. dev.                 0.1213  0.0893
+  weight sum                   369     369
+  precision                 0.0027  0.0027
+
+Tamura10
+  mean                      0.3394  0.2091
+  std. dev.                 0.1377  0.1049
+  weight sum                   369     369
+  precision                 0.0031  0.0031
+
+Tamura11
+  mean                      0.4536  0.3388
+  std. dev.                 0.1423  0.1208
+  weight sum                   369     369
+  precision                 0.0043  0.0043
+
+Tamura13
+  mean                      0.2415  0.2918
+  std. dev.                 0.0941  0.1036
+  weight sum                   369     369
+  precision                 0.0048  0.0048
+
+Tamura15
+  mean                       0.329  0.4656
+  std. dev.                 0.1402  0.1605
+  weight sum                   369     369
+  precision                 0.0052  0.0052
+
+Tamura16
+  mean                      0.2693  0.4073
+  std. dev.                 0.1124   0.154
+  weight sum                   369     369
+  precision                 0.0047  0.0047
+
+Tamura17
+  mean                      0.1749  0.2787
+  std. dev.                 0.0942  0.1267
+  weight sum                   369     369
+  precision                 0.0052  0.0052
+
+
+
+Time taken to build model: 0.06 seconds
+Time taken to test model on training data: 0.07 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         602               81.5718 %
+Incorrectly Classified Instances       136               18.4282 %
+Kappa statistic                          0.6314
+Mean absolute error                      0.1867
+Root mean squared error                  0.4231
+Relative absolute error                 37.3421 %
+Root relative squared error             84.6247 %
+Total Number of Instances              738     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.827     0.195      0.809     0.827     0.818      0.882    Y
+                 0.805     0.173      0.823     0.805     0.814      0.881    N
+Weighted Avg.    0.816     0.184      0.816     0.816     0.816      0.882
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        7543               75.43   %
+Incorrectly Classified Instances      2457               24.57   %
+Kappa statistic                          0.0816
+Mean absolute error                      0.2464
+Root mean squared error                  0.4837
+Relative absolute error                 49.2712 %
+Root relative squared error             96.7435 %
+Total Number of Instances            10000     
+

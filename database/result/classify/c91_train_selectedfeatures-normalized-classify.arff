@@ -1,0 +1,97 @@
+
+Naive Bayes Classifier
+
+                          Class
+Attribute                     Y       N
+                          (0.5)   (0.5)
+========================================
+AutoColorCorrelogram0
+  mean                    0.3383  0.3532
+  std. dev.               0.3585  0.3804
+  weight sum                  93      93
+  precision               0.0065  0.0065
+
+ColorLayout3
+  mean                     0.574  0.4586
+  std. dev.               0.2313  0.2126
+  weight sum                  93      93
+  precision               0.0385  0.0385
+
+ColorLayout9
+  mean                    0.4688  0.5516
+  std. dev.               0.2312  0.1782
+  weight sum                  93      93
+  precision                 0.05    0.05
+
+ColorLayout11
+  mean                    0.5037  0.5211
+  std. dev.               0.1223  0.0924
+  weight sum                  93      93
+  precision               0.0769  0.0769
+
+ColorLayout19
+  mean                    0.3647  0.4041
+  std. dev.               0.1657  0.1327
+  weight sum                  93      93
+  precision               0.0833  0.0833
+
+ColorLayout20
+  mean                    0.6115  0.6437
+  std. dev.               0.1644  0.1187
+  weight sum                  93      93
+  precision               0.0667  0.0667
+
+ColorLayout102
+  mean                     0.521  0.5005
+  std. dev.               0.1252  0.0891
+  weight sum                  93      93
+  precision               0.0909  0.0909
+
+FCTH107
+  mean                         0  0.0323
+  std. dev.               0.1667  0.1767
+  weight sum                  93      93
+  precision                    1       1
+
+JpegCH56
+  mean                    0.5028  0.3013
+  std. dev.               0.2731  0.2518
+  weight sum                  93      93
+  precision               0.0085  0.0085
+
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.03 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         131               70.4301 %
+Incorrectly Classified Instances        55               29.5699 %
+Kappa statistic                          0.4086
+Mean absolute error                      0.3537
+Root mean squared error                  0.4498
+Relative absolute error                 70.7487 %
+Root relative squared error             89.9555 %
+Total Number of Instances              186     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.634     0.226      0.738     0.634     0.682      0.774    Y
+                 0.774     0.366      0.679     0.774     0.724      0.774    N
+Weighted Avg.    0.704     0.296      0.708     0.704     0.703      0.774
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        5163               51.63   %
+Incorrectly Classified Instances      4837               48.37   %
+Kappa statistic                          0.0063
+Mean absolute error                      0.5197
+Root mean squared error                  0.5803
+Relative absolute error                103.9469 %
+Root relative squared error            116.0653 %
+Total Number of Instances            10000     
+

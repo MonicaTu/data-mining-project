@@ -1,0 +1,1 @@
+["AutoColorCorrelogram254", "CEDD6", "CEDD35", "CEDD50", "CEDD59", "CEDD82", "CEDD115", "CEDD139", "ColorLayout6", "FCTH31", "FCTH76", "FCTH94", "JCD35", "JCD94", "ScalableColor47"]

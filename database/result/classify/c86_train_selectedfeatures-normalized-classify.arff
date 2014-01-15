@@ -1,0 +1,133 @@
+
+Naive Bayes Classifier
+
+                            Class
+Attribute                       Y       N
+                            (0.5)   (0.5)
+==========================================
+AutoColorCorrelogram254
+  mean                      0.0428  0.0159
+  std. dev.                 0.1631  0.0904
+  weight sum                   189     189
+  precision                 0.0067  0.0067
+
+CEDD6
+  mean                       0.073  0.0762
+  std. dev.                 0.1283  0.1516
+  weight sum                   189     189
+  precision                    0.2     0.2
+
+CEDD35
+  mean                      0.0992  0.0966
+  std. dev.                 0.2083  0.1694
+  weight sum                   189     189
+  precision                   0.25    0.25
+
+CEDD50
+  mean                      0.2351  0.2872
+  std. dev.                 0.2002   0.219
+  weight sum                   189     189
+  precision                 0.1429  0.1429
+
+CEDD59
+  mean                       0.127  0.1368
+  std. dev.                 0.2339  0.1971
+  weight sum                   189     189
+  precision                 0.1429  0.1429
+
+CEDD82
+  mean                      0.0467  0.0529
+  std. dev.                 0.1164  0.1419
+  weight sum                   189     189
+  precision                 0.1667  0.1667
+
+CEDD115
+  mean                      0.0291  0.0172
+  std. dev.                 0.1304   0.073
+  weight sum                   189     189
+  precision                   0.25    0.25
+
+CEDD139
+  mean                      0.0406  0.0212
+  std. dev.                 0.1499  0.0946
+  weight sum                   189     189
+  precision                 0.3333  0.3333
+
+ColorLayout6
+  mean                      0.4747  0.5219
+  std. dev.                 0.1392  0.1469
+  weight sum                   189     189
+  precision                 0.0455  0.0455
+
+FCTH31
+  mean                      0.0868  0.0698
+  std. dev.                 0.1352  0.1078
+  weight sum                   189     189
+  precision                    0.2     0.2
+
+FCTH76
+  mean                      0.0185  0.0053
+  std. dev.                 0.0944  0.0833
+  weight sum                   189     189
+  precision                    0.5     0.5
+
+FCTH94
+  mean                      0.0053  0.0026
+  std. dev.                 0.0833  0.0833
+  weight sum                   189     189
+  precision                    0.5     0.5
+
+JCD35
+  mean                      0.1207  0.1236
+  std. dev.                 0.2343  0.1905
+  weight sum                   189     189
+  precision                 0.0909  0.0909
+
+JCD94
+  mean                      0.0074  0.0021
+  std. dev.                 0.0752  0.0333
+  weight sum                   189     189
+  precision                    0.2     0.2
+
+ScalableColor47
+  mean                      0.7082  0.8037
+  std. dev.                 0.2566  0.1933
+  weight sum                   189     189
+  precision                   0.05    0.05
+
+
+
+Time taken to build model: 0.03 seconds
+Time taken to test model on training data: 0.05 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         225               59.5238 %
+Incorrectly Classified Instances       153               40.4762 %
+Kappa statistic                          0.1905
+Mean absolute error                      0.4178
+Root mean squared error                  0.5424
+Relative absolute error                 83.551  %
+Root relative squared error            108.4758 %
+Total Number of Instances              378     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.323     0.132      0.709     0.323     0.444      0.664    Y
+                 0.868     0.677      0.562     0.868     0.682      0.664    N
+Weighted Avg.    0.595     0.405      0.635     0.595     0.563      0.664
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        8293               82.93   %
+Incorrectly Classified Instances      1707               17.07   %
+Kappa statistic                          0.0162
+Mean absolute error                      0.2697
+Root mean squared error                  0.3815
+Relative absolute error                 53.9432 %
+Root relative squared error             76.2977 %
+Total Number of Instances            10000     
+

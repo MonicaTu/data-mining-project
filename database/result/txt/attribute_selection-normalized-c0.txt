@@ -1,0 +1,1 @@
+["CEDD72", "ColorLayout6", "ColorLayout10", "ColorLayout66", "FCTH93", "JpegCH3", "Tamura5", "Tamura16", "Tamura17"]
