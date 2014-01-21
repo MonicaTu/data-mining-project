@@ -32,7 +32,8 @@ end
 
 def weka_classify(train, class_index, test)
   arff = "#{File.basename(train, ".*")}-classify.arff"
-  options = "-c #{class_index} -no-cv -i"
+#  options = "-c #{class_index} -no-cv -i"
+  options = "-c #{class_index} -i"
   exesh("java #{@maxHeap} weka.classifiers.bayes.NaiveBayes #{options} -t #{train} -T #{test} > #{arff}")
   return arff
 end

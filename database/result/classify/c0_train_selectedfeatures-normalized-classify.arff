@@ -402,6 +402,13 @@ Total Number of Instances             9794
 Weighted Avg.    0.64      0.36       0.643     0.64      0.638      0.686
 
 
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3495 1402 |    a = Y
+ 2127 2770 |    b = N
+
+
 === Error on test data ===
 
 Correctly Classified Instances        6083               60.83   %
@@ -412,4 +419,19 @@ Root mean squared error                  0.5895
 Relative absolute error                 78.5148 %
 Root relative squared error            117.9095 %
 Total Number of Instances            10000     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.685     0.43       0.443     0.685     0.538      0.668    Y
+                 0.57      0.315      0.784     0.57      0.66       0.668    N
+Weighted Avg.    0.608     0.353      0.671     0.608     0.619      0.668
+
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 2279 1046 |    a = Y
+ 2871 3804 |    b = N
 

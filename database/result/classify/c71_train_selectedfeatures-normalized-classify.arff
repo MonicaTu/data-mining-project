@@ -506,7 +506,7 @@ Tamura14
 
 
 Time taken to build model: 0.1 seconds
-Time taken to test model on training data: 0.27 seconds
+Time taken to test model on training data: 0.28 seconds
 
 === Error on training data ===
 
@@ -528,6 +528,13 @@ Total Number of Instances             4680
 Weighted Avg.    0.602     0.398      0.628     0.602     0.581      0.658
 
 
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  884 1456 |    a = Y
+  406 1934 |    b = N
+
+
 === Error on test data ===
 
 Correctly Classified Instances        7077               70.77   %
@@ -538,4 +545,19 @@ Root mean squared error                  0.5197
 Relative absolute error                 60.013  %
 Root relative squared error            103.937  %
 Total Number of Instances            10000     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.427     0.239      0.252     0.427     0.317      0.633    Y
+                 0.761     0.573      0.875     0.761     0.814      0.634    N
+Weighted Avg.    0.708     0.52       0.776     0.708     0.735      0.633
+
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+  678  911 |    a = Y
+ 2012 6399 |    b = N
 
